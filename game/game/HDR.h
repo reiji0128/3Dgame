@@ -39,9 +39,9 @@ public:
 	void CreateScaleDownBuffer();
 
 	/// <summary>
-	/// 縮小バッファパス
+	/// ガウスぼかし処理
 	/// </summary>
-	void ScaleDownBufferPath();
+	void GaussBlurProcess();
 
 	/// <summary>
 	/// ガウスぼかしの重み係数計算

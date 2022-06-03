@@ -13,7 +13,7 @@
 LineCollider::LineCollider(Actor* owner, int updateOrder)
     : ColliderComponent(owner, ColliderTypeEnum::Line, updateOrder)
 {
-    // ラインコライダーをPhysicsWirldに登録
+    // ラインコライダーをPhysicsWorldに登録
     GAMEINSTANCE.GetPhysics()->AddCollider(this);
 }
 

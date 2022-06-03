@@ -203,36 +203,10 @@ void Renderer::Draw()
 	glDisable(GL_BLEND);
 
 	// ライト空間行列を取得
-	Matrix4 lightSpaceMat = mDepthMapRenderer->GetLightSpaceMatrix();
+	mLightSpaceMat = mDepthMapRenderer->GetLightSpaceMatrix();
 
-	// デプスレンダリングパス開始
-	mDepthMapRenderer->DepthRenderingBegin();
-	{
-
-		// スタティックメッシュをデプスへレンダリング
-		mMeshDepthShader->SetActive();
-		mMeshDepthShader->SetMatrixUniform("lightSpaceMatrix", lightSpaceMat);
-		for (auto mc : mMeshComponents)
-		{
-			if (mc->GetVisible())
-			{
-				mc->Draw(mMeshDepthShader);
-			}
-		}
-
-		// スキンメッシュをデプスへレンダリング
-		mSkinnedDepthShader->SetActive();
-		mSkinnedDepthShader->SetMatrixUniform("uLightSpaceMat", lightSpaceMat);
-		for (auto sk : mSkeletalMeshes)
-		{
-			if (sk->GetVisible())
-			{
-				sk->Draw(mSkinnedDepthShader);
-			}
-		}
-	}
-	// デプスレンダリングの終了
-	mDepthMapRenderer->DepthRenderingEnd();
+	// 焼きこみ処理
+	BakeDepthMap();
 
 	mHDRRenderer->HDRRenderingBegin();
 	{
@@ -254,7 +228,7 @@ void Renderer::Draw()
 		glBindTexture(GL_TEXTURE_2D, mDepthMapRenderer->GetDepthTexID());
 		// 追加パラメーター
 		mShadowMapShader->SetIntUniform("depthMap", 1);
-		mShadowMapShader->SetMatrixUniform("uLightSpaceMatrix", lightSpaceMat);
+		mShadowMapShader->SetMatrixUniform("uLightSpaceMatrix", mLightSpaceMat);
 
 		// 全てのメッシュコンポーネントを描画
 		for (auto mc : mMeshComponents)
@@ -283,7 +257,7 @@ void Renderer::Draw()
 		glBindTexture(GL_TEXTURE_2D, mDepthMapRenderer->GetDepthTexID());
 		// 追加パラメーター
 		mSkinnedShader->SetIntUniform("depthMap", 1);
-		mSkinnedShader->SetMatrixUniform("uLightSpaceMatrix", lightSpaceMat);
+		mSkinnedShader->SetMatrixUniform("uLightSpaceMatrix", mLightSpaceMat);
 		// ビュー射影行列のセット
 		mSkinnedShader->SetMatrixUniform("uViewProj", mView * mProjection);
 		// Uniform変数にライトをセット
@@ -298,16 +272,16 @@ void Renderer::Draw()
 
 		//球体の描画
 		Vector3 lightColor(0.8, 0.5, 0.2);
-		mHDRShader->SetActive();
-		mHDRShader->SetMatrixUniform("uViewProj", mView * mProjection);
-		mHDRShader->SetVectorUniform("color", lightColor);
-		mHDRShader->SetFloatUniform("luminance", 15.0f);
+		mPhongShader->SetActive();
+		mPhongShader->SetMatrixUniform("uViewProj", mView * mProjection);
+		mPhongShader->SetVectorUniform("color", lightColor);
+		mPhongShader->SetFloatUniform("luminance", 15.0f);
 		// 全てのメッシュコンポーネントを描画
 		for (auto mc : mHighLightMeshes)
 		{
 			if (mc->GetVisible())
 			{
-				mc->Draw(mHDRShader);
+				mc->Draw(mPhongShader);
 			}
 		}
 	}
@@ -316,7 +290,7 @@ void Renderer::Draw()
 	// hdrカラーバッファを2Dスクリーンを埋め尽くす四角形ポリゴンに描画
 	// この時トーンマッピングを行ってHDR画像をLDRにする
 	//mHDRRenderer->RenderQuad();
-	mHDRRenderer->ScaleDownBufferPath();
+	mHDRRenderer->GaussBlurProcess();
 	mHDRRenderer->HDRBloomBlend();
 
 	GAMEINSTANCE.GetPhysics()->DebugShowBox();
@@ -421,7 +395,7 @@ void Renderer::AddMeshComponent(MeshComponent* mesh, ShaderTag shaderTag)
 	{
 		mMeshComponents.emplace_back(mesh);
 	}
-	else if (shaderTag == ShaderTag::HDR)
+	else if (shaderTag == ShaderTag::HDRBloomBlend)
 	{
 		mHighLightMeshes.emplace_back(mesh);
 	}
@@ -441,7 +415,7 @@ void Renderer::RemoveMeshComponent(MeshComponent* mesh,ShaderTag shaderTag)
 		auto iter = std::find(mMeshComponents.begin(), mMeshComponents.end(), mesh);
 		mMeshComponents.erase(iter);
 	}
-	else if (shaderTag == ShaderTag::HDR)
+	else if (shaderTag == ShaderTag::HDRBloomBlend)
 	{
 		auto iter = std::find(mHighLightMeshes.begin(), mHighLightMeshes.end(), mesh);
 		mHighLightMeshes.erase(iter);
@@ -647,6 +621,41 @@ void Renderer::DrawHelthGauge(Texture* texture, const Vector2& offset, float sca
 	DrawHelthGaugeTexture(texture, 0, 1, 1, offset, scaleX, scaleY, alpha);
 }
 
+/// <summary>
+/// デプスマップに焼きこむ処理
+/// </summary>
+void Renderer::BakeDepthMap()
+{
+	// デプスレンダリングパス開始
+	mDepthMapRenderer->DepthRenderingBegin();
+	{
+
+		// スタティックメッシュをデプスへレンダリング
+		mMeshDepthShader->SetActive();
+		mMeshDepthShader->SetMatrixUniform("lightSpaceMatrix", mLightSpaceMat);
+		for (auto mc : mMeshComponents)
+		{
+			if (mc->GetVisible())
+			{
+				mc->Draw(mMeshDepthShader);
+			}
+		}
+
+		// スキンメッシュをデプスへレンダリング
+		mSkinnedDepthShader->SetActive();
+		mSkinnedDepthShader->SetMatrixUniform("uLightSpaceMat", mLightSpaceMat);
+		for (auto sk : mSkeletalMeshes)
+		{
+			if (sk->GetVisible())
+			{
+				sk->Draw(mSkinnedDepthShader);
+			}
+		}
+	}
+	// デプスレンダリングの終了
+	mDepthMapRenderer->DepthRenderingEnd();
+}
+
 bool Renderer::LoadShaders()
 {
 	// スプライトシェーダーのロード//
@@ -728,8 +737,8 @@ bool Renderer::LoadShaders()
 	}
 
 	// スフィアシェーダーのロード
-	mHDRShader = new Shader();
-	if (!mHDRShader->Load("Shaders/Sphere.vert", "Shaders/Sphere.frag"))
+	mPhongShader = new Shader();
+	if (!mPhongShader->Load("Shaders/Sphere.vert", "Shaders/Sphere.frag"))
 	{
 		return false;
 	}

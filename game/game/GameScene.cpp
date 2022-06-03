@@ -14,7 +14,6 @@
 #include "PlayerActor.h"
 #include "EnemyActor.h"
 #include "ThirdPersonCameraActor.h";
-#include "Gun.h"
 #include "SphereObj.h"
 
 
@@ -53,17 +52,10 @@ GameScene::GameScene()
 	mTex = RENDERER->GetTexture("Assets/Player/Health.png");
 
 	// プレイヤーの生成
-	player = new PlayerActor(Vector3(890, -50, -55),                 // 座標
-	                         1.0f,                                  // スケール
+	player = new PlayerActor(Vector3(890, -50, -55),                // 座標
+	                       	 1.0,                                   // スケール
 	                         "Assets/Player/SpecialForces.gpmesh",  // gpMeshのファイルパス
 	                         "Assets/Player/SpecialForces.gpskel"); // gpSkelのファイルパス
-	
-	// 銃の生成
-	Gun* gun = new Gun(Vector3(90, -40, 140),                         // オフセット位置
-		               Vector3(-15, 130, 0),                          // オフセット角度(radian)
-		               "Assets/Gun/SK_KA47.gpmesh",                   // gpMeshのファイルパス
-		                player->GetSkeltalMeshComp(),                 // アタッチ先のSkeltalMeshCompクラスのポインタ
-		               "LeftHandIndex4");                             // アタッチ先のボーン名
 
     // カメラの生成
 	ThirdPersonCameraActor* camera = new ThirdPersonCameraActor(player);

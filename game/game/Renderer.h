@@ -30,58 +30,234 @@ class Renderer
 {
 public:
 	Renderer();
-	~Renderer();
-	bool                   Initialize(int screenWidth, int screenHeight, bool fullScreen);     // SDL & GL初期化
-	void                   Shutdown();                                                         // 終了
-	void                   Draw();                                                             // 描画
 
-	// セッター系
-	void                   SetViewMatrix(const Matrix4& view);                                 // ビュー行列のセット
-	void                   SetProjMatrix(const Matrix4& proj);                                 // プロジェクション行列にセット
-	void                   SetAmbientLight(const Vector3& ambientColor)                        // アンビエントライトのセット
-	{
-		mAmbientLight = ambientColor;
-	}
+	~Renderer();
+
+	/// <summary>
+	/// SDLとGLの初期化
+	/// </summary>
+	/// <param name="screenWidth">スクリーンの幅</param>
+	/// <param name="screenHeight">スクリーンの高さ</param>
+	/// <param name="fullScreen">フルスクリーンにするか？</param>
+	/// <returns>
+	/// true  : 初期化成功
+	/// false : 初期化失敗 
+	/// </returns>
+	bool Initialize(int screenWidth, int screenHeight, bool fullScreen);
+
+	/// <summary>
+	/// 終了処理
+	/// </summary>
+	void Shutdown();
+
+	/// <summary>
+	/// 描画処理
+	/// </summary>
+	void Draw();
+
+// セッター //
+
+	/// <summary>
+	/// ビュー行列のセット
+	/// </summary>
+	/// <param name="view">セットするビュー行列</param>
+	void SetViewMatrix(const Matrix4& view);
+
+	/// <summary>
+	/// プロジェクション行列にセット
+	/// </summary>
+	/// <param name="proj">セットするプロジェクション行列</param>
+	void SetProjMatrix(const Matrix4& proj);
+
+	/// <summary>
+	/// アンビエントライトのセット
+	/// </summary>
+	/// <param name="ambientColor">セットするアンビエントライト</param>
+	void SetAmbientLight(const Vector3& ambientColor){ mAmbientLight = ambientColor; }
+
+	/// <summary>
+	/// デプスマップで使うライト情報をセット
+	/// </summary>
+	/// <param name="centerPos">マップの中心座標</param>
+	/// <param name="lightDir">ライトの向き</param>
+	/// <param name="upVec">Z軸(縦軸)</param>
+	/// <param name="lightDistance">ライトの距離</param>
 	void SetDepthSetting(const Vector3& centerPos, const Vector3& lightDir, const Vector3& upVec, const float lightDistance);
-	// ゲッター系
-	SDL_Renderer* GetSDLRenderer() { return mSDLRenderer; }                           // SDL系の描画に必要なSDLrendererを得る
-	class Texture* GetTexture(const std::string& fileName);                            // テクスチャをファイル名から返す
-	class Mesh* GetMesh(const std::string& fileName);                               // メッシュをファイル名から返す
-	const class Skeleton* GetSkeleton(const char* fileName);                                  // スケルタルモデルの取得
-	const class Animation* GetAnimation(const char* fileName, bool loop);                      // スケルタルアニメーションの取得
+
+// ゲッター //
+
+	/// <summary>
+	/// SDL系の描画に必要なSDLrendererを得る
+	/// </summary>
+	/// <returns>SDL_Rendererのポインタ</returns>
+	SDL_Renderer* GetSDLRenderer() { return mSDLRenderer; }
+
+	/// <summary>
+	/// ファイル名からテクスチャを取得
+	/// </summary>
+	class Texture* GetTexture(const std::string& fileName);
+
+	/// <summary>
+	/// ファイル名からメッシュを取得
+	/// </summary>
+	class Mesh* GetMesh(const std::string& fileName);
+
+	/// <summary>
+	/// ファイル名からスケルタルモデルの取得
+	/// </summary>
+	const class Skeleton* GetSkeleton(const char* fileName);
+
+	/// <summary>
+	/// ファイル名からスケルタルアニメーションの取得
+	/// </summary>
+	/// <param name="loop">アニメーションをループさせるかどうか</param>
+	const class Animation* GetAnimation(const char* fileName, bool loop);
+
+	/// <summary>
+	/// ファイル名からエフェクトの取得
+	/// </summary>
 	class EffekseerEffect* GetEffect(const char16_t* fileName);
 
-	float                  GetScreenWidth() { return static_cast<float>(mScreenWidth); }       // スクリーン幅
-	float                  GetScreenHeight() { return static_cast<float>(mScreenHeight); }     // スクリーン高さ
-	DirectionalLight& GetDirectionalLight() { return mDirectionalLight; }                      // ディレクショナルライト
+	/// <summary>
+	/// スクリーンの幅の取得
+	/// </summary>
+	/// <returns>スクリーンの幅</returns>
+	float GetScreenWidth() { return static_cast<float>(mScreenWidth); }
+
+	/// <summary>
+	/// スクリーン高さの取得
+	/// </summary>
+	/// <returns>スクリーンの高さ</returns>
+	float GetScreenHeight() { return static_cast<float>(mScreenHeight); }
+
+	/// <summary>
+	/// ディレクショナルライトの取得
+	/// </summary>
+	/// <returns>ディレクショナルライト</returns>
+	DirectionalLight& GetDirectionalLight() { return mDirectionalLight; }
+
+	/// <summary>
+	/// ビュー行列の取得
+	/// </summary>
+	/// <returns>ビュー行列</returns>
 	const Matrix4& GetViewMatrix() { return mView; }
+
+	/// <summary>
+	/// プロジェクション行列の取得
+	/// </summary>
+	/// <returns>プロジェクション行列</returns>
 	const Matrix4& GetProjectionMatrix() { return mProjection; }
 
-	void                   AddMeshComponent(class MeshComponent* mesh, ShaderTag shaderTag);    // メッシュコンポーネントの追加
-	void                   RemoveMeshComponent(class MeshComponent* mesh,ShaderTag shaderTag);  // メッシュコンポーネントの削除
-	void                   AddSprite(SpriteComponent* Sprite);
-	void                   RemoveSprite(SpriteComponent* sprite);
-	void                   ShowResource();                                                     // 登録されている テクスチャ・メッシュリソースの表示（デバッグ用）
-	void                   WindowClear() { glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); } // ウィンドウ描画クリア
-	void                   WindowFlip() { SDL_GL_SwapWindow(mWindow); }                        // ウィンドウフリップ
-	void                   SetWindowTitle(const std::string& title);                           // ウィンドウタイトルのセット
+	/// <summary>
+	/// メッシュコンポーネントの追加
+	/// </summary>
+	/// <param name="mesh">追加するMeshComponentのポインタ</param>
+	/// <param name="shaderTag">適用するシェーダーのタグ</param>
+	void AddMeshComponent(class MeshComponent* mesh, ShaderTag shaderTag);
 
-	void                   SpriteDrawBegin();
-	void                   SpriteDrawEnd();
+	/// <summary>
+	/// メッシュコンポーネントの削除
+	/// </summary>
+	/// <param name="mesh">削除するMeshComponentのポインタ</param>
+	/// <param name="shaderTag">適用していたシェーダーのタグ</param>
+	void RemoveMeshComponent(class MeshComponent* mesh,ShaderTag shaderTag);
 
-	void                   DrawTexture(class Texture* texture,
-		int index, int xDivNum, int yDivNum,
-		const Vector2& offset,
-		float scale = 1.0f, float alpha = 1.0f);
-	void                   DrawTexture(class Texture* texture, const Vector2& offset,
-		float scale = 1.0f, float alpha = 1.0f);
+	/// <summary>
+	/// スプライトの追加
+	/// </summary>
+	/// <param name="Sprite">追加するスプライトのポインタ</param>
+	void AddSprite(SpriteComponent* Sprite);
 
-	void                   DrawHelthGaugeTexture(class Texture* texture, int index, int xDivNum, int yDivNum,
-		const Vector2& offset, float scaleX, float scaleY, float alpha);
-	void                   DrawHelthGauge(class Texture* texture, const Vector2& offset,
-		float scaleX, float scaleY, float alpha = 1.0f);
+	/// <summary>
+	/// スプライトの削除
+	/// </summary>
+	/// <param name="sprite">削除するスプライトのポインタ</param>
+	void RemoveSprite(SpriteComponent* sprite);
 
-	// Effekseer関連
+	/// <summary>
+	/// 登録されている テクスチャ・メッシュリソースの表示（デバッグ用）
+	/// </summary>
+	void ShowResource();
+
+	/// <summary>
+	/// ウィンドウ描画クリア
+	/// </summary>
+	void WindowClear() { glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); }
+
+	/// <summary>
+	/// ウィンドウフリップ
+	/// </summary>
+	void WindowFlip() { SDL_GL_SwapWindow(mWindow); }
+
+	/// <summary>
+	/// ウィンドウタイトルのセット
+	/// </summary>
+	/// <param name="title">ウィンドウタイトル</param>
+	void SetWindowTitle(const std::string& title);
+
+	/// <summary>
+	/// スプライト描画の開始処理
+	/// </summary>
+	void SpriteDrawBegin();
+
+	/// <summary>
+	/// スプライト描画の終了処理
+	/// </summary>
+	void SpriteDrawEnd();
+
+	/// <summary>
+	/// テクスチャの描画
+	/// </summary>
+	/// <param name="texture">テクスチャのファイルパス</param>
+	/// <param name="index"></param>
+	/// <param name="xDivNum">画像の縦の数</param>
+	/// <param name="yDivNum">画像の横の数</param>
+	/// <param name="offset">オフセット位置</param>
+	/// <param name="scale">拡大率</param>
+	/// <param name="alpha">透明度</param>
+	void DrawTexture(class Texture* texture,int index, int xDivNum, int yDivNum,
+	               	 const Vector2& offset,float scale = 1.0f, float alpha = 1.0f);
+
+	/// <summary>
+	/// テクスチャの描画
+	/// </summary>
+	/// <param name="texture">テクスチャのファイルパス</param>
+	/// <param name="offset">オフセット位置</param>
+	/// <param name="scale">拡大率</param>
+	/// <param name="alpha">透明度</param>
+	void DrawTexture(class Texture* texture, const Vector2& offset,
+		             float scale = 1.0f, float alpha = 1.0f);
+
+	/// <summary>
+	/// 体力ゲージの描画
+	/// </summary>
+	/// <param name="texture">ファイルパス</param>
+	/// <param name="index"></param>
+	/// <param name="xDivNum">画像の縦の数</param>
+	/// <param name="yDivNum">画像の横の数</param>
+	/// <param name="offset">オフセット位置</param>
+	/// <param name="scaleX">Xの拡大率</param>
+	/// <param name="scaleY">Yの拡大率</param>
+	/// <param name="alpha">透明度</param>
+	void DrawHelthGaugeTexture(class Texture* texture, int index, int xDivNum, int yDivNum,
+		                       const Vector2& offset, float scaleX, float scaleY, float alpha);
+
+	/// <summary>
+	/// 体力ゲージの描画
+	/// </summary>
+	/// <param name="texture">テクスチャのファイルパス</param>
+	/// <param name="offset">オフセット位置</param>
+	/// <param name="scaleX">Xの拡大率</param>
+	/// <param name="scaleY">Yの拡大率</param>
+	/// <param name="alpha">透明度</param>
+	void DrawHelthGauge(class Texture* texture, const Vector2& offset,
+		                float scaleX, float scaleY, float alpha = 1.0f);
+
+	/// <summary>
+	/// デプスマップに焼きこみむ処理
+	/// </summary>
+	void BakeDepthMap();
+
 	Effekseer::RefPtr<EffekseerRendererGL::Renderer> GetEffekseerRenderer() { return mEffekseerRenderer; }
 	Effekseer::RefPtr<Effekseer::Manager> GetEffekseerManager() { return mEffekseerManager; }
 
@@ -106,39 +282,86 @@ private:
 	std::unordered_map<const char16_t*, class EffekseerEffect*> mEffects; // エフェクト
 
 // シェーダー関連 //
-	class Shader* mSpriteShader;       // スプライトシェーダー
-	class Shader* mTilemapShader;      // タイルマップシェーダー
-	class Shader* mMeshShader;         // メッシュシェーダー
-	class Shader* mMeshDepthShader;    // メッシュのデプスシェーダー
-	class Shader* mSkinnedShader;      // スキンメッシュシェーダー
-	class Shader* mSkinnedDepthShader; // スキンメッシュのデプスシェーダー
-	class Shader* mShadowMapShader;    // シャドウマップシェーダー
-	class Shader* mHDRShader;          // HDRシェーダー
-	class DepthMap* mDepthMapRenderer; // デプスレンダラー
-	class HDR* mHDRRenderer;           // HDRレンダラー
+ 
+	// スプライトシェーダー
+	class Shader* mSpriteShader;
 
-// 基本行列関連 //
-	Matrix4                                           mView;             // ビュー行列
-	Matrix4                                           mProjection;       // プロジェクション行列
+	// タイルマップシェーダー
+	class Shader* mTilemapShader;
 
-// スプライト頂点配列 //
+	// メッシュシェーダー
+	class Shader* mMeshShader;
+
+	// メッシュのデプスシェーダー
+	class Shader* mMeshDepthShader;
+
+	// スキンメッシュシェーダー
+	class Shader* mSkinnedShader;
+
+	// スキンメッシュのデプスシェーダー
+	class Shader* mSkinnedDepthShader;
+
+	// シャドウマップシェーダー
+	class Shader* mShadowMapShader;
+
+	// フォグシェーダー
+	class Shader* mPhongShader;
+
+	// デプスレンダラー
+	class DepthMap* mDepthMapRenderer;
+
+	// HDRレンダラー
+	class HDR* mHDRRenderer;
+
+// 行列関連 //
+
+	// ビュー行列
+	Matrix4 mView;
+
+	// プロジェクション行列
+	Matrix4 mProjection;
+
+	// ライト空間行列
+	Matrix4 mLightSpaceMat;
+
+// 頂点配列 //
+
+	// スプライトの頂点配列
 	class VertexArray* mSpriteVerts;
+
+	// 体力ゲージ用の頂点配列
 	class VertexArray* mHealthVerts;
 
 // ライティング関連 //
-	Vector3                                           mAmbientLight;     // アンビエントライト
-	DirectionalLight                                  mDirectionalLight; // ディレクショナルライト
+
+	// アンビエントライト
+	Vector3 mAmbientLight; 
+
+	// ディレクショナルライト
+	DirectionalLight mDirectionalLight;
 
 // レンダリングベース情報関連 //
-	SDL_Window* mWindow;             // SDLウィンドウハンドル 
-	SDL_GLContext mContext;          // OpenGLコンテキスト
-	SDL_Renderer* mSDLRenderer;      // SDLレンダリングハンドル
 
-	const char* mGlslVersion;      // GLSLのバージョン
+	// SDLウィンドウハンドル 
+	SDL_Window* mWindow;
+
+	// OpenGLコンテキスト
+	SDL_GLContext mContext;
+
+	// SDLレンダリングハンドル
+	SDL_Renderer* mSDLRenderer;
+
+	// GLSLのバージョン
+	const char* mGlslVersion;
 
 // Effekseer関連 //
-	Effekseer::RefPtr<EffekseerRendererGL::Renderer> mEffekseerRenderer; // Effekseerレンダラ
-	Effekseer::RefPtr<Effekseer::Manager>            mEffekseerManager; // Effekseerマネージャ  
+
+	// Effekseerレンダラ
+	Effekseer::RefPtr<EffekseerRendererGL::Renderer> mEffekseerRenderer;
+
+	// Effekseerマネージャ
+	Effekseer::RefPtr<Effekseer::Manager> mEffekseerManager;  
 };
 
-bool GLErrorHandle(const char* location);                              // OpenGLのエラーハンドル取得
+// OpenGLのエラーハンドル取得
+bool GLErrorHandle(const char* location);

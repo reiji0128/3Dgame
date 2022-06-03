@@ -20,6 +20,8 @@ struct CollisionInfo
 // 球体
 struct Sphere
 {
+	Sphere();
+
 	/// <summary>
 	/// コンストラクタ
 	/// </summary>

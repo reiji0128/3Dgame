@@ -11,10 +11,10 @@ enum class ShaderTag : unsigned char
 						                      
 	Sprite,                                   // スプライトシェーダー
 	Tilemap,                                  // タイルマップシェーダー
-	Phong,                                    
+	Phong,                                    // フォグシェーダー
 	DepthmapAndShadowMap,                     // デプスマップとシャドウマップ (メッシュ用)
 	SkinnedDepthmapAndSkinnedShadowMap,       // デプスマップとシャドウマップ (スケルタルメッシュ用)
-	HDR,                                      // HDR
+	HDRBloomBlend,                            // HDRとBloomのブレンドシェーダー
 						                      
 	None,                                     // 適用するシェーダーなし
 						                      

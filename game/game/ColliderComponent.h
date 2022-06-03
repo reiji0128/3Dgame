@@ -5,9 +5,12 @@
 #include "PhysicsWorld.h"
 #include "Tag.h"
 
+
+// 前方宣言
 class BoxCollider;
 class WallCollider;
 class LineCollider;
+class SphereCollider;
 
 /// <summary>
 /// コライダータイプ
@@ -93,6 +96,7 @@ public:
 	virtual bool Check(class BoxCollider* other);
 	virtual bool Check(class WallCollider* other);
 	virtual bool Check(class LineCollider* other);
+	virtual bool Check(class SphereCollider* other);
 
 protected:
 	// オブジェクトのタグ

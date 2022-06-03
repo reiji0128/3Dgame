@@ -49,3 +49,8 @@ bool ColliderComponent::Check(LineCollider* other)
 {
     return false;
 }
+
+bool ColliderComponent::Check(SphereCollider* other)
+{
+    return false;
+}

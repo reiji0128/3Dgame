@@ -2,6 +2,12 @@
 #include <algorithm>
 #include <array>
 
+Sphere::Sphere()
+    :mCenter(0.0f,0.0f,0.0f)
+    ,mRadius(0.0f)
+{
+}
+
 Sphere::Sphere(const Vector3& center, float radius)
     :mCenter(center)
     ,mRadius(radius)

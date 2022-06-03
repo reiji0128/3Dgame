@@ -3,6 +3,8 @@
 #include "Math.h"
 #include "ShaderTag.h"
 
+class SphereCollider;
+
 class SphereObj : public Actor
 {
 public:
@@ -10,5 +12,9 @@ public:
 	~SphereObj();
 
 private:
+	// 適用するシェーダーのタグ
 	ShaderTag mShaderTag;
+
+	// トリガー用のスフィアコライダー
+	SphereCollider* mSphereCollider;
 };

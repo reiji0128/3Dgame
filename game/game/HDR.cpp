@@ -165,14 +165,15 @@ void HDR::CreateScaleDownBuffer()
 }
 
 /// <summary>
-/// 縮小バッファパス
+/// ガウスぼかし処理
 /// </summary>
-void HDR::ScaleDownBufferPath()
+void HDR::GaussBlurProcess()
 {
 	glEnable(GL_BLEND);
 	glDisable(GL_DEPTH_TEST);
 	glDisable(GL_CULL_FACE);
 
+// ダウンサンプリング処理 //
 	unsigned int renderSource = mColorBuffers[1];     // ダウンサンプリングさせる対象を輝度バッファに指定
 
 	// 縮小バッファ1,3,5,7,9にコピー
@@ -206,7 +207,7 @@ void HDR::ScaleDownBufferPath()
 		renderSource = mBlurBufferTex[i * 2 + 1];     // 描画終わったらテクスチャを次回にダウンサンプリングの対象に
 	}
 
-	// ガウスぼかし処理 //
+// ガウスぼかし処理 //
 	const unsigned int sampleCount = 15;
 	Vector3 offset[sampleCount];
 
