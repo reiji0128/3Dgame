@@ -20,5 +20,6 @@ public:
 	~StaticBGActor();
 
 private:
+	// 適用するシェーダーのタグ
 	ShaderTag mShaderTag;
 };

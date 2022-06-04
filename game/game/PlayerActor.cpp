@@ -8,7 +8,6 @@
 #include "LineCollider.h"
 #include "Input.h"
 #include "ThirdPersonCameraActor.h"
-
 #include "PlayerStateIdle.h"
 #include "PlayerStateRun.h"
 
@@ -166,22 +165,14 @@ void PlayerActor::OnCollisionEnter(ColliderComponent* ownCollider, ColliderCompo
 		}
 	}
 
-	if (colliderTag == Tag::Altar)
+	/*if (colliderTag == Tag::Switch)
 	{
 		if (ownCollider == mBoxCollider)
 		{
-			info = ownCollider->GetCollisionInfo();
-			mPosition += info.mFixVec;
-			ComputeWorldTransform();
-		}
-	}
+			if (INPUT_INSTANCE.IsKeyOff(KEY_SPACE))
+			{
 
-	//// ÉvÉåÉCÉÑÅ[ÇÃçUåÇÇ∆Ç‘Ç¬Ç©Ç¡ÇΩ?
-	//if (colliderTag == Tag::EnemyBullet)
-	//{
-	//	if (ownCollider == mHitBox)
-	//	{
-	//		mIsHitTrig = true;
-	//	}
-	//}
+			}
+		}
+	}*/
 }

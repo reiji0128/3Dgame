@@ -28,7 +28,6 @@ public:
 	void Draw(class Shader* shader) override;
 
 // セッター //
-	//オフセット位置・角度
 
 	/// <summary>
 	/// 差分の平行移動行列を設定

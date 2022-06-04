@@ -18,6 +18,7 @@ enum class Tag : unsigned char
 	Altar,
 	Camera,
 	Effect,
+	Switch,
 	Weapon,
 
 	End                 // Tagの終了マーカー　（Endより後に定義してはならない）

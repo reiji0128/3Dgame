@@ -262,24 +262,69 @@ public:
 	Effekseer::RefPtr<Effekseer::Manager> GetEffekseerManager() { return mEffekseerManager; }
 
 private:
+	/// <summary>
+	/// シェーダーの読み込み
+	/// </summary>
+	/// <returns>
+	///  true  : 読み込み成功
+	///  false : 読み込み失敗
+	/// </returns>
+	bool LoadShaders();
 
-	bool                                              LoadShaders();                          // シェーダーの初期化
-	void                                              SetLightUniforms(class Shader* shader); // ライト値をシェーダーにセット
-	void                                              CreateSpriteVerts();                    // スプライト頂点作成
-	void                                              CreateHealthGaugeVerts();               // 体力ゲージ用の頂点作成
-	void                                              ScreenVAOSetting(unsigned int& vao);    // 画面全体を覆う頂点定義
+	/// <summary>
+	/// ライト情報をシェーダーにUniformにセット
+	/// </summary>
+	/// <param name="shader">シェーダーのポインタ</param>
+	void SetLightUniforms(class Shader* shader);
 
-	int                                               mScreenWidth;       // スクリーン幅                                                           
-	int                                               mScreenHeight;      // スクリーン高さ
-	std::unordered_map<std::string, class Texture*>   mTextures;          // テクスチャ登録配列
-	std::unordered_map<std::string, class Mesh*>      mMeshs;             // メッシュ登録配列
-	std::vector<class MeshComponent*>                 mMeshComponents;    // メッシュコンポーネント登録配列
-	std::vector<class MeshComponent*>                 mHighLightMeshes;   // HDRメッシュ
-	std::vector<class SkeletalMeshComponent*>         mSkeletalMeshes;    // スケルタルメッシュの描画に使われる
-	std::unordered_map<std::string, class Skeleton*>  mSkeletons;         // スケルタルデータ
-	std::unordered_map<std::string, class Animation*> mAnims;             // アニメーションデータ
-	std::vector<SpriteComponent*>                     mSprites;           // スプライトの描画に使われるスプライトコンポーネントのポインタの可変長コンテナ
-	std::unordered_map<const char16_t*, class EffekseerEffect*> mEffects; // エフェクト
+	/// <summary>
+	/// スプライト頂点作成
+	/// </summary>
+	void CreateSpriteVerts();
+
+	/// <summary>
+	/// 体力ゲージ用の頂点作成
+	/// </summary>
+	void CreateHealthGaugeVerts();
+
+	/// <summary>
+	/// 画面全体を覆う頂点定義
+	/// </summary>
+	/// <param name="vao"></param>
+	void ScreenVAOSetting(unsigned int& vao);
+
+	// スクリーン幅
+	int mScreenWidth;
+
+	// スクリーン高さ
+	int mScreenHeight;
+
+	// テクスチャ登録配列
+	std::unordered_map<std::string, class Texture*> mTextures;
+
+	// メッシュ登録配列
+	std::unordered_map<std::string, class Mesh*> mMeshs;
+
+	// メッシュコンポーネント登録配列
+	std::vector<class MeshComponent*> mMeshComponents;
+
+	// HDRを適用するメッシュコンポーネント登録配列
+	std::vector<class MeshComponent*> mHighLightMeshes;
+
+	// スケルタルメッシュの描画に使われる
+	std::vector<class SkeletalMeshComponent*> mSkeletalMeshes;
+
+	// スケルタルデータ
+	std::unordered_map<std::string, class Skeleton*> mSkeletons;
+
+	// アニメーションデータ
+	std::unordered_map<std::string, class Animation*> mAnims;
+
+	// スプライトの描画に使われるスプライトコンポーネントのポインタの可変長コンテナ
+	std::vector<SpriteComponent*> mSprites;
+
+	// エフェクト
+	std::unordered_map<const char16_t*, class EffekseerEffect*> mEffects;
 
 // シェーダー関連 //
  

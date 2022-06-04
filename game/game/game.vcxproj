@@ -163,6 +163,8 @@
     <ClCompile Include="BoneTransform.cpp" />
     <ClCompile Include="BoxCollider.cpp" />
     <ClCompile Include="CameraActor.cpp" />
+    <ClCompile Include="ChangeBGActor.cpp" />
+    <ClCompile Include="ChangeMeshComponent.cpp" />
     <ClCompile Include="ColliderComponent.cpp" />
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="Component.cpp" />
@@ -205,6 +207,8 @@
     <ClCompile Include="SphereObj.cpp" />
     <ClCompile Include="SpriteComponent.cpp" />
     <ClCompile Include="StaticBGActor.cpp" />
+    <ClCompile Include="SwitchActor.cpp" />
+    <ClCompile Include="SwitchReceiver.cpp" />
     <ClCompile Include="Tag.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="ThirdPersonCameraActor.cpp" />
@@ -223,6 +227,8 @@
     <ClInclude Include="BoneTransform.h" />
     <ClInclude Include="BoxCollider.h" />
     <ClInclude Include="CameraActor.h" />
+    <ClInclude Include="ChangeBGActor.h" />
+    <ClInclude Include="ChangeMeshComponent.h" />
     <ClInclude Include="ColliderComponent.h" />
     <ClInclude Include="Collision.h" />
     <ClInclude Include="Component.h" />
@@ -268,6 +274,8 @@
     <ClInclude Include="SphereObj.h" />
     <ClInclude Include="SpriteComponent.h" />
     <ClInclude Include="StaticBGActor.h" />
+    <ClInclude Include="SwitchActor.h" />
+    <ClInclude Include="SwitchReceiver.h" />
     <ClInclude Include="Tag.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="ThirdPersonCameraActor.h" />

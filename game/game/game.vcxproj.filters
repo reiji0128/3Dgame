@@ -42,9 +42,6 @@
     <Filter Include="ソース ファイル\Actor\Player\State">
       <UniqueIdentifier>{ba589db9-53c0-43f2-9944-0068aaae5484}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\Actor\StaticBGActor">
-      <UniqueIdentifier>{d5ae47f3-d86e-4279-a4f5-e34e9e04fc71}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ソース ファイル\System">
       <UniqueIdentifier>{f4837f22-0459-4d1e-9fa9-08a6a9ee1489}</UniqueIdentifier>
     </Filter>
@@ -153,6 +150,21 @@
     </Filter>
     <Filter Include="ソース ファイル\Collider\AttackObj">
       <UniqueIdentifier>{4e7c3ed3-4193-4105-a236-5ba5c56b2d73}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Actor\BackGroundActor">
+      <UniqueIdentifier>{d5ae47f3-d86e-4279-a4f5-e34e9e04fc71}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Actor\BackGroundActor\StaticBGActor">
+      <UniqueIdentifier>{6bb70bcc-531c-4e16-ad12-8949c11c96ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Actor\BackGroundActor\ChangeBGActor">
+      <UniqueIdentifier>{ae55b362-f22e-4f93-902e-56dbd325da48}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Actor\BackGroundActor\SwitchActor">
+      <UniqueIdentifier>{93ae21b4-bfa9-4033-9b2c-d88ea7ca2de1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Component\ChangeMesh">
+      <UniqueIdentifier>{94ba37ac-9477-4465-ad72-02d4d3b95f8d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -285,9 +297,6 @@
     <ClCompile Include="TitleScene.cpp">
       <Filter>ソース ファイル\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="StaticBGActor.cpp">
-      <Filter>ソース ファイル\Actor\StaticBGActor</Filter>
-    </ClCompile>
     <ClCompile Include="Tag.cpp">
       <Filter>ソース ファイル\System\Tag</Filter>
     </ClCompile>
@@ -329,6 +338,21 @@
     </ClCompile>
     <ClCompile Include="AttackObj.cpp">
       <Filter>ソース ファイル\Collider\AttackObj</Filter>
+    </ClCompile>
+    <ClCompile Include="StaticBGActor.cpp">
+      <Filter>ソース ファイル\Actor\BackGroundActor\StaticBGActor</Filter>
+    </ClCompile>
+    <ClCompile Include="ChangeBGActor.cpp">
+      <Filter>ソース ファイル\Actor\BackGroundActor\ChangeBGActor</Filter>
+    </ClCompile>
+    <ClCompile Include="SwitchActor.cpp">
+      <Filter>ソース ファイル\Actor\BackGroundActor\SwitchActor</Filter>
+    </ClCompile>
+    <ClCompile Include="SwitchReceiver.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="ChangeMeshComponent.cpp">
+      <Filter>ソース ファイル\Component\ChangeMesh</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -470,9 +494,6 @@
     <ClInclude Include="TitleScene.h">
       <Filter>ソース ファイル\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="StaticBGActor.h">
-      <Filter>ソース ファイル\Actor\StaticBGActor</Filter>
-    </ClInclude>
     <ClInclude Include="Tag.h">
       <Filter>ソース ファイル\System\Tag</Filter>
     </ClInclude>
@@ -514,6 +535,21 @@
     </ClInclude>
     <ClInclude Include="AttackObj.h">
       <Filter>ソース ファイル\Collider\AttackObj</Filter>
+    </ClInclude>
+    <ClInclude Include="StaticBGActor.h">
+      <Filter>ソース ファイル\Actor\BackGroundActor\StaticBGActor</Filter>
+    </ClInclude>
+    <ClInclude Include="ChangeBGActor.h">
+      <Filter>ソース ファイル\Actor\BackGroundActor\ChangeBGActor</Filter>
+    </ClInclude>
+    <ClInclude Include="SwitchActor.h">
+      <Filter>ソース ファイル\Actor\BackGroundActor\SwitchActor</Filter>
+    </ClInclude>
+    <ClInclude Include="SwitchReceiver.h">
+      <Filter>ソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="ChangeMeshComponent.h">
+      <Filter>ソース ファイル\Component\ChangeMesh</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
