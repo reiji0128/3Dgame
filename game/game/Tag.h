@@ -15,11 +15,12 @@ enum class Tag : unsigned char
 	Enemy,
 	EnemyBullet,
 	BackGround,
-	Altar,
+	ChangeBackGround,
 	Camera,
 	Effect,
 	Switch,
-	Weapon,
+	Lantern,
+	Receiver,
 
 	End                 // Tagの終了マーカー　（Endより後に定義してはならない）
 };

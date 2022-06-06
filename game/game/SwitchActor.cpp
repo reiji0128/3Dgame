@@ -4,11 +4,13 @@
 #include "Mesh.h"
 #include "MeshComponent.h"
 #include "BoxCollider.h"
+#include "Input.h"
 
-SwitchActor::SwitchActor(const Vector3& position, const char* gpmeshFileName)
+SwitchActor::SwitchActor(const Vector3& position, const char* gpmeshFileName,bool switchFlag)
 	:Actor(Tag::Switch)
 	,mShaderTag(ShaderTag::DepthmapAndShadowMap)
 	,mBoxCollider(nullptr)
+	,mChangeBackGroundFlag(switchFlag)
 {
 	mPosition = position;
 
@@ -25,4 +27,40 @@ SwitchActor::SwitchActor(const Vector3& position, const char* gpmeshFileName)
 
 SwitchActor::~SwitchActor()
 {
+}
+
+void SwitchActor::UpdateActor(float deltaTime)
+{
+	if (mChangeBackGroundFlag)
+	{
+		ChangeState();
+	}
+	else
+	{
+		Receiver::OFF;
+	}
+}
+
+void SwitchActor::OnCollisionEnter(ColliderComponent* ownCollider, ColliderComponent* otherCollider)
+{
+	Tag colliderTag = otherCollider->GetTag();
+
+	// Õ“Ëî•ñ
+	CollisionInfo info;
+
+	if (colliderTag == Tag::Player)
+	{
+		if (INPUT_INSTANCE.IsKeyOff(KEY_START))
+		{
+			mChangeBackGroundFlag = true;
+		}
+	}
+}
+
+void SwitchActor::ChangeState()
+{
+	for (auto receiver : mReceiverManager)
+	{
+		receiver->SetSwitchState(Receiver::ON);
+	}
 }

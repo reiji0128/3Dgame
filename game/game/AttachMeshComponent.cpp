@@ -86,7 +86,6 @@ void AttachMeshComponent::SetOffsetRotation(const Vector3& rot)
 	radian.y = rot.y * (Math::Pi / 180);
 	radian.z = rot.z * (Math::Pi / 180);
 
-
 	mRotationMat = Matrix4::CreateRotationX(radian.x)*
 				   Matrix4::CreateRotationY(radian.y)*
 				   Matrix4::CreateRotationZ(radian.z);

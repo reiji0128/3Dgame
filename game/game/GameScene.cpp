@@ -74,9 +74,8 @@ GameScene::GameScene()
 	GAMEINSTANCE.GetPhysics()->SetOneSideReactionCollisionPair(Tag::Enemy, Tag::Player);
 	GAMEINSTANCE.GetPhysics()->SetOneSideReactionCollisionPair(Tag::BackGround, Tag::Player);
 	GAMEINSTANCE.GetPhysics()->SetOneSideReactionCollisionPair(Tag::BackGround, Tag::Enemy);
-	GAMEINSTANCE.GetPhysics()->SetOneSideReactionCollisionPair(Tag::PlayerBullet, Tag::Enemy);
-	GAMEINSTANCE.GetPhysics()->SetOneSideReactionCollisionPair(Tag::EnemyBullet, Tag::Player);
-	GAMEINSTANCE.GetPhysics()->SetOneSideReactionCollisionPair(Tag::EnemyBullet, Tag::Altar);
+	GAMEINSTANCE.GetPhysics()->SetOneSideReactionCollisionPair(Tag::ChangeBackGround, Tag::Player);
+	GAMEINSTANCE.GetPhysics()->SetOneSideReactionCollisionPair(Tag::Switch, Tag::Player);
 }
 
 GameScene::~GameScene()

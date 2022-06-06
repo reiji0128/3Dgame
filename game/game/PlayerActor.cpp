@@ -6,7 +6,6 @@
 #include "BoxCollider.h"
 #include "Animation.h"
 #include "LineCollider.h"
-#include "Input.h"
 #include "ThirdPersonCameraActor.h"
 #include "PlayerStateIdle.h"
 #include "PlayerStateRun.h"
@@ -164,15 +163,4 @@ void PlayerActor::OnCollisionEnter(ColliderComponent* ownCollider, ColliderCompo
 			ComputeWorldTransform();
 		}
 	}
-
-	/*if (colliderTag == Tag::Switch)
-	{
-		if (ownCollider == mBoxCollider)
-		{
-			if (INPUT_INSTANCE.IsKeyOff(KEY_SPACE))
-			{
-
-			}
-		}
-	}*/
 }

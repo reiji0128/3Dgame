@@ -3,24 +3,34 @@
 #include "Actor.h"
 #include "Math.h"
 #include "ShaderTag.h"
+#include "Receiver.h"
+#include <vector>
 
 class SwitchActor : public Actor
 {
 public:
-	SwitchActor(const Vector3& position, const char* gpmeshFileName);
+	SwitchActor(const Vector3& position, const char* gpmeshFileName,bool switchFlag);
 
 	~SwitchActor();
 
-// ゲッター //
-	bool GetSwitchFlag() { return mSwitchFlag; }
+	void UpdateActor(float deltaTime)override;
+
+	void OnCollisionEnter(class ColliderComponent* ownCollider, class ColliderComponent* otherCollider) override;
+
+	void ChangeState();
+
+// セッター //
+	void AddReceiver(Receiver* receiver) { mReceiverManager.push_back(receiver); }
 
 private:
 	// スイッチフラグ
-	bool mSwitchFlag;
+	bool mChangeBackGroundFlag;
 
 	// 適用するシェーダーのタグ
 	ShaderTag mShaderTag;
 
 	// ボックスコライダーのポインタ
 	class BoxCollider* mBoxCollider;
+
+	std::vector<Receiver*> mReceiverManager;
 };

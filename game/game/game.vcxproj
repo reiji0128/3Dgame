@@ -186,6 +186,7 @@
     <ClCompile Include="HDR.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="InputController.cpp" />
+    <ClCompile Include="Lantern.cpp" />
     <ClCompile Include="LineCollider.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Math.cpp" />
@@ -197,6 +198,7 @@
     <ClCompile Include="PlayerStateIdle.cpp" />
     <ClCompile Include="PlayerStateRun.cpp" />
     <ClCompile Include="RapidJsonHelper.cpp" />
+    <ClCompile Include="Receiver.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="ShaderTag.cpp" />
@@ -208,7 +210,6 @@
     <ClCompile Include="SpriteComponent.cpp" />
     <ClCompile Include="StaticBGActor.cpp" />
     <ClCompile Include="SwitchActor.cpp" />
-    <ClCompile Include="SwitchReceiver.cpp" />
     <ClCompile Include="Tag.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="ThirdPersonCameraActor.cpp" />
@@ -251,6 +252,7 @@
     <ClInclude Include="HDR.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="InputController.h" />
+    <ClInclude Include="Lantern.h" />
     <ClInclude Include="LineCollider.h" />
     <ClInclude Include="Math.h" />
     <ClInclude Include="MatrixPalette.h" />
@@ -261,8 +263,10 @@
     <ClInclude Include="PlayerActor.h" />
     <ClInclude Include="PlayerStateBase.h" />
     <ClInclude Include="PlayerStateIdle.h" />
+    <ClInclude Include="PlayerStateJump.h" />
     <ClInclude Include="PlayerStateRun.h" />
     <ClInclude Include="RapidJsonHelper.h" />
+    <ClInclude Include="Receiver.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="SceneBase.h" />
     <ClInclude Include="Shader.h" />
@@ -275,13 +279,41 @@
     <ClInclude Include="SpriteComponent.h" />
     <ClInclude Include="StaticBGActor.h" />
     <ClInclude Include="SwitchActor.h" />
-    <ClInclude Include="SwitchReceiver.h" />
     <ClInclude Include="Tag.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="ThirdPersonCameraActor.h" />
     <ClInclude Include="TitleScene.h" />
     <ClInclude Include="VertexArray.h" />
     <ClInclude Include="WallCollider.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Shaders\BasicMesh.frag" />
+    <None Include="Shaders\BasicMesh.vert" />
+    <None Include="Shaders\DebugDepthMap.frag" />
+    <None Include="Shaders\DebugDepthMap.vert" />
+    <None Include="Shaders\DepthMap.frag" />
+    <None Include="Shaders\DepthMap.vert" />
+    <None Include="Shaders\DownSampling.frag" />
+    <None Include="Shaders\GaussBlur.frag" />
+    <None Include="Shaders\HDR.frag" />
+    <None Include="Shaders\HDRBloomBlend.frag" />
+    <None Include="Shaders\Line.frag" />
+    <None Include="Shaders\Line.vert" />
+    <None Include="Shaders\LineWorld.vert" />
+    <None Include="Shaders\Phong.frag" />
+    <None Include="Shaders\Phong.vert" />
+    <None Include="Shaders\ScreenBuffer.frag" />
+    <None Include="Shaders\ScreenBuffer.vert" />
+    <None Include="Shaders\Shadowmap.frag" />
+    <None Include="Shaders\Shadowmap.vert" />
+    <None Include="Shaders\Skinned.vert" />
+    <None Include="Shaders\SkinnedDepthMap.vert" />
+    <None Include="Shaders\SkinnedShadowmap.vert" />
+    <None Include="Shaders\Sphere.frag" />
+    <None Include="Shaders\Sphere.vert" />
+    <None Include="Shaders\Sprite.frag" />
+    <None Include="Shaders\Sprite.vert" />
+    <None Include="Shaders\tilemap.frag" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

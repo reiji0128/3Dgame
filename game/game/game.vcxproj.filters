@@ -21,12 +21,6 @@
     <Filter Include="ソース ファイル\Camera">
       <UniqueIdentifier>{6327b65e-ddf4-4555-b00f-9b99cd38e5ce}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\Actor\Enemy">
-      <UniqueIdentifier>{ab7e05ea-e6d7-472a-91b7-562c8189d82b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\Actor\Enemy\State">
-      <UniqueIdentifier>{1242ee22-45b6-47cd-82a3-e9559cb5758a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ソース ファイル\Game">
       <UniqueIdentifier>{ddff6434-ebd9-40a0-a3bb-88e5846a1644}</UniqueIdentifier>
     </Filter>
@@ -165,6 +159,12 @@
     </Filter>
     <Filter Include="ソース ファイル\Component\ChangeMesh">
       <UniqueIdentifier>{94ba37ac-9477-4465-ad72-02d4d3b95f8d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Actor\Enemy">
+      <UniqueIdentifier>{ab7e05ea-e6d7-472a-91b7-562c8189d82b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Actor\Enemy\State">
+      <UniqueIdentifier>{1242ee22-45b6-47cd-82a3-e9559cb5758a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -348,11 +348,14 @@
     <ClCompile Include="SwitchActor.cpp">
       <Filter>ソース ファイル\Actor\BackGroundActor\SwitchActor</Filter>
     </ClCompile>
-    <ClCompile Include="SwitchReceiver.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="ChangeMeshComponent.cpp">
       <Filter>ソース ファイル\Component\ChangeMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="Receiver.cpp">
+      <Filter>ソース ファイル\Actor\BackGroundActor\StaticBGActor</Filter>
+    </ClCompile>
+    <ClCompile Include="Lantern.cpp">
+      <Filter>ソース ファイル\Actor</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -545,11 +548,100 @@
     <ClInclude Include="SwitchActor.h">
       <Filter>ソース ファイル\Actor\BackGroundActor\SwitchActor</Filter>
     </ClInclude>
-    <ClInclude Include="SwitchReceiver.h">
-      <Filter>ソース ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="ChangeMeshComponent.h">
       <Filter>ソース ファイル\Component\ChangeMesh</Filter>
     </ClInclude>
+    <ClInclude Include="Receiver.h">
+      <Filter>ソース ファイル\Actor\BackGroundActor\StaticBGActor</Filter>
+    </ClInclude>
+    <ClInclude Include="Lantern.h">
+      <Filter>ソース ファイル\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerStateJump.h">
+      <Filter>ソース ファイル\Actor\Player\State</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Shaders\BasicMesh.frag">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="Shaders\BasicMesh.vert">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="Shaders\DebugDepthMap.frag">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="Shaders\DebugDepthMap.vert">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="Shaders\DepthMap.frag">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="Shaders\DepthMap.vert">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="Shaders\DownSampling.frag">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="Shaders\GaussBlur.frag">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="Shaders\HDR.frag">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="Shaders\HDRBloomBlend.frag">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="Shaders\Line.frag">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="Shaders\Line.vert">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="Shaders\LineWorld.vert">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="Shaders\Phong.frag">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="Shaders\Phong.vert">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="Shaders\ScreenBuffer.frag">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="Shaders\ScreenBuffer.vert">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="Shaders\Shadowmap.frag">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="Shaders\Shadowmap.vert">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="Shaders\Skinned.vert">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="Shaders\SkinnedDepthMap.vert">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="Shaders\SkinnedShadowmap.vert">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="Shaders\Sphere.frag">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="Shaders\Sphere.vert">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="Shaders\Sprite.frag">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="Shaders\Sprite.vert">
+      <Filter>Shader</Filter>
+    </None>
+    <None Include="Shaders\tilemap.frag">
+      <Filter>Shader</Filter>
+    </None>
   </ItemGroup>
 </Project>
