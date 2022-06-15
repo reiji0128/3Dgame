@@ -8,13 +8,14 @@
 // プレイヤーの状態
 enum class PlayerState
 {
-	STATE_IDLE,     // 待機
-	STATE_RUN,      // 走っている
-	STATE_SHOT,     // 射撃
-	STATE_DAMAGE,    
-	STATE_DEATH,
+	STATE_IDLE,      // 待機
+	STATE_RUN,       // 走っている
+	STATE_JUMPSTART, // ジャンプ始め
+	STATE_JUMPLOOP,  // ジャンプループ
+	STATE_JUMPEND,   // ジャンプ終わり
+	STATE_DEATH,     // 死亡
 
-	STATE_NUM       // 総アニメーション数
+	STATE_NUM        // 総アニメーション数
 };
 
 class PlayerActor :public Actor

@@ -1,12 +1,11 @@
 #pragma once
 #include "PlayerStateBase.h"
 
-class PlayerStateJump : public PlayerStateBase
+class PlayerStateJumpLoop : public PlayerStateBase
 {
 public:
-	PlayerStateJump();
-
-	~PlayerStateJump();
+	PlayerStateJumpLoop();
+	~PlayerStateJumpLoop();
 
 	PlayerState Update(class PlayerActor* owner, float deltaTime) override;
 

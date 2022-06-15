@@ -272,16 +272,16 @@ void Renderer::Draw()
 
 		//球体の描画
 		Vector3 lightColor(0.8, 0.5, 0.2);
-		mPhongShader->SetActive();
-		mPhongShader->SetMatrixUniform("uViewProj", mView * mProjection);
-		mPhongShader->SetVectorUniform("color", lightColor);
-		mPhongShader->SetFloatUniform("luminance", 15.0f);
+		mHighLightShader->SetActive();
+		mHighLightShader->SetMatrixUniform("uViewProj", mView * mProjection);
+		mHighLightShader->SetVectorUniform("color", lightColor);
+		mHighLightShader->SetFloatUniform("luminance", 15.0f);
 		// 全てのメッシュコンポーネントを描画
 		for (auto mc : mHighLightMeshes)
 		{
 			if (mc->GetVisible())
 			{
-				mc->Draw(mPhongShader);
+				mc->Draw(mHighLightShader);
 			}
 		}
 	}
@@ -467,7 +467,8 @@ void Renderer::CreateSpriteVerts()
 		-0.5f,-0.5f, 0.f,  0.f, 0.f, 0.0f,  0.f, 1.f  // 左下
 	};
 
-	unsigned int indices[] = {
+	unsigned int indices[] = 
+	{
 		0, 1, 2,
 		2, 3, 0
 	};
@@ -737,8 +738,8 @@ bool Renderer::LoadShaders()
 	}
 
 	// スフィアシェーダーのロード
-	mPhongShader = new Shader();
-	if (!mPhongShader->Load("Shaders/Sphere.vert", "Shaders/Sphere.frag"))
+	mHighLightShader = new Shader();
+	if (!mHighLightShader->Load("Shaders/Sphere.vert", "Shaders/Sphere.frag"))
 	{
 		return false;
 	}

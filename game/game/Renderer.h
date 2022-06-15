@@ -350,7 +350,7 @@ private:
 	class Shader* mShadowMapShader;
 
 	// フォグシェーダー
-	class Shader* mPhongShader;
+	class Shader* mHighLightShader;
 
 	// デプスレンダラー
 	class DepthMap* mDepthMapRenderer;

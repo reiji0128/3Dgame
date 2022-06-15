@@ -88,6 +88,7 @@ GameScene::GameScene()
 
 GameScene::~GameScene()
 {
+	delete mFont;
 	delete mGrid;
 }
 
@@ -123,15 +124,6 @@ void GameScene::Draw()
 
 	// 2D•`‰æ‚ÌŠJŽnˆ—
 	RENDERER->SpriteDrawBegin();
-
-	// ‘Ì—ÍƒQ[ƒW•`‰æ
-	/*mHealthScaleX = mAltar->GetHealth() / 1000 * 3.5f;
-	if (mHealthScaleX <= 0.001)
-	{
-		mHealthScaleX = 0;
-	}
-	RENDERER->DrawHelthGauge(mTex, Vector2(10, 50), mHealthScaleX, 0.03f, 1.0f);*/
-	//RENDERER->DrawHelthGauge(mUI, Vector2(1500, 540),1.0f ,1.0f, 1.0f);
 
 	// 2D•`‰æ‚ÌI—¹ˆ—
 	RENDERER->SpriteDrawEnd();

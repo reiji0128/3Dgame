@@ -196,6 +196,7 @@
     <ClCompile Include="PhysicsWorld.cpp" />
     <ClCompile Include="PlayerActor.cpp" />
     <ClCompile Include="PlayerStateIdle.cpp" />
+    <ClCompile Include="PlayerStateJump.cpp" />
     <ClCompile Include="PlayerStateRun.cpp" />
     <ClCompile Include="RapidJsonHelper.cpp" />
     <ClCompile Include="Receiver.cpp" />
@@ -264,6 +265,7 @@
     <ClInclude Include="PlayerStateBase.h" />
     <ClInclude Include="PlayerStateIdle.h" />
     <ClInclude Include="PlayerStateJump.h" />
+    <ClInclude Include="PlayerStateJumpLoop.h" />
     <ClInclude Include="PlayerStateRun.h" />
     <ClInclude Include="RapidJsonHelper.h" />
     <ClInclude Include="Receiver.h" />
