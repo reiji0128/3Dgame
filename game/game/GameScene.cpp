@@ -15,7 +15,8 @@
 #include "EnemyActor.h"
 #include "ThirdPersonCameraActor.h";
 #include "SphereObj.h"
-
+#include "SwitchActor.h"
+#include "ChangeBGActor.h"
 
 GameScene::GameScene()
 	:mFont(nullptr)
@@ -62,9 +63,16 @@ GameScene::GameScene()
 	camera->SetCameraLength(800.0f);
 
 	// バックグラウンドの生成
-	new StaticBGActor(Vector3(890, -130, 20), "Assets/BackGround/testMap.gpmesh");
+	new StaticBGActor(Vector3(890, -130, 20), "Assets/BackGround/StaticMesh.gpmesh");
 	
 	new SphereObj(Vector3(890, -50, 70));
+
+	// スイッチの生成
+	SwitchActor* sw = new SwitchActor(Vector3(0, 0, 0), "Assets/Crystal/Crystal.gpmesh", false);
+
+	ChangeBGActor* changeBG = new ChangeBGActor(Vector3(0, 0, 0), "Assets/BackGround/Mesh_Dungeons_Floor.gpmesh");
+
+	sw->AddReceiver(changeBG);
 
 	// バックグラウンドの当たり判定の生成
 	new BGCollisionSetter("Assets/BackGround/CollisionBox.json");

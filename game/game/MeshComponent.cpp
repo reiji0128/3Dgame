@@ -23,6 +23,7 @@ MeshComponent::MeshComponent(class Actor* owner, ShaderTag shaderTag, bool isSke
 	,mIsSkeletal(isSkeletal)
 	,mShaderTag(shaderTag)
 {
+	mOwner = owner;
 	GAMEINSTANCE.GetRenderer()->AddMeshComponent(this,mShaderTag);
 	printf("new MeshComponent : [%5d] owner->( 0x%p )\n", GetID(), owner);
 }
@@ -59,7 +60,10 @@ void MeshComponent::Draw(Shader* shader)
 		VertexArray* va = mMesh->GetVertexArray();
 		va->SetActive();
 
-		// 描画
-		glDrawElements(GL_TRIANGLES, va->GetNumIndices(), GL_UNSIGNED_INT, nullptr);
+		if (mOwner->GetState() == Actor::State::EActive)
+		{
+			// 描画
+			glDrawElements(GL_TRIANGLES, va->GetNumIndices(), GL_UNSIGNED_INT, nullptr);
+		}
 	}
 }

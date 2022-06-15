@@ -166,6 +166,9 @@
     <Filter Include="ソース ファイル\Actor\Enemy\State">
       <UniqueIdentifier>{1242ee22-45b6-47cd-82a3-e9559cb5758a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Actor\Attach">
+      <UniqueIdentifier>{ae9b106b-24e9-4c74-b950-d1ef64d960ca}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SphereObj.cpp">
@@ -355,7 +358,7 @@
       <Filter>ソース ファイル\Actor\BackGroundActor\StaticBGActor</Filter>
     </ClCompile>
     <ClCompile Include="Lantern.cpp">
-      <Filter>ソース ファイル\Actor</Filter>
+      <Filter>ソース ファイル\Actor\Attach</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -554,11 +557,11 @@
     <ClInclude Include="Receiver.h">
       <Filter>ソース ファイル\Actor\BackGroundActor\StaticBGActor</Filter>
     </ClInclude>
-    <ClInclude Include="Lantern.h">
-      <Filter>ソース ファイル\Actor</Filter>
-    </ClInclude>
     <ClInclude Include="PlayerStateJump.h">
       <Filter>ソース ファイル\Actor\Player\State</Filter>
+    </ClInclude>
+    <ClInclude Include="Lantern.h">
+      <Filter>ソース ファイル\Actor\Attach</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

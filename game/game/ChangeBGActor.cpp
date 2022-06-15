@@ -23,12 +23,13 @@ ChangeBGActor::~ChangeBGActor()
 
 void ChangeBGActor::UpdateActor(float deltaTime)
 {
+	// スイッチがONであればアクティブに
 	if (GetSwitchState() == ON)
 	{
-
+		mState = State::EActive;
 	}
 	else
 	{
-
+		mState = State::EInactive;
 	}
 }
