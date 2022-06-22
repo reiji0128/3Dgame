@@ -7,7 +7,7 @@
 
 
 SphereObj::SphereObj(const Vector3& pos)
-	:Actor(Tag::Altar)
+	:Actor(Tag::Lantern)
 	,mShaderTag(ShaderTag::HDRBloomBlend)
 	,mSphereCollider(nullptr)
 {

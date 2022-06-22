@@ -53,7 +53,7 @@ GameScene::GameScene()
 	mTex = RENDERER->GetTexture("Assets/Player/Health.png");
 
 	// プレイヤーの生成
-	player = new PlayerActor(Vector3(890, -50, -55),                // 座標
+	player = new PlayerActor(Vector3(0.0, 0.0, 0.0),                // 座標
 	                       	 1.0,                                   // スケール
 	                         "Assets/Player/SpecialForces.gpmesh",  // gpMeshのファイルパス
 	                         "Assets/Player/SpecialForces.gpskel"); // gpSkelのファイルパス
@@ -63,19 +63,19 @@ GameScene::GameScene()
 	camera->SetCameraLength(800.0f);
 
 	// バックグラウンドの生成
-	new StaticBGActor(Vector3(890, -130, 20), "Assets/BackGround/StaticMesh.gpmesh");
+	new StaticBGActor(Vector3(0.0, 0.0, 0.0), "Assets/BackGround/BackGround.gpmesh");
 	
-	new SphereObj(Vector3(890, -50, 70));
+	new SphereObj(Vector3(0.0, 0.0, 0.0));
 
 	// スイッチの生成
-	SwitchActor* sw = new SwitchActor(Vector3(0, 0, 0), "Assets/Crystal/Crystal.gpmesh", false);
+	//SwitchActor* sw = new SwitchActor(Vector3(0, 0, 0), "Assets/Crystal/Crystal.gpmesh", false);
 
-	ChangeBGActor* changeBG = new ChangeBGActor(Vector3(0, 0, 0), "Assets/BackGround/Mesh_Dungeons_Floor.gpmesh");
+	//ChangeBGActor* changeBG = new ChangeBGActor(Vector3(0, 0, 0), "Assets/BackGround/Mesh_Dungeons_Floor.gpmesh");
 
-	sw->AddReceiver(changeBG);
+	//sw->AddReceiver(changeBG);
 
 	// バックグラウンドの当たり判定の生成
-	new BGCollisionSetter("Assets/BackGround/CollisionBox.json");
+	new BGCollisionSetter("Assets/BackGround/BackGroundCollisionBox.json");
 
 	
 	// ゲームシステムに当たり判定リストを登録する

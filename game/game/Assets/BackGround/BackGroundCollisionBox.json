@@ -1,0 +1,28 @@
+{
+"data":[
+	{
+		"No":"1",
+		"position_x":"-10",
+		"position_y":"0",
+		"position_z":"-10",
+		"rot_x":"0",
+		"rot_y":"0",
+		"rot_z":"0",
+		"scale_x":"28.25",
+		"scale_y":"28",
+		"scale_z":"0.25"
+	},
+	{
+		"No":"2",
+		"position_x":"0",
+		"position_y":"0",
+		"position_z":"0",
+		"rot_x":"0",
+		"rot_y":"0",
+		"rot_z":"0",
+		"scale_x":"0",
+		"scale_y":"0",
+		"scale_z":"0"
+	}
+]
+}

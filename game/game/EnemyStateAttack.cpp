@@ -15,7 +15,7 @@ EnemyState EnemyStateAttack::Update(EnemyActor* owner, float deltaTime)
 	mStateTimer -= deltaTime;
 
 	// プレイヤーから離れたら追跡モードへ
-	Vector3 playerPos = GAMEINSTANCE.GetFirstActor(Tag::Altar)->GetPosition();
+	Vector3 playerPos = GAMEINSTANCE.GetFirstActor(Tag::Player)->GetPosition();
 	Vector3 enemyToPlayerVec = playerPos - owner->GetPosition();
 
 	float length = enemyToPlayerVec.Length();
