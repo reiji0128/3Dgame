@@ -37,6 +37,12 @@ public:
 //セッター //
 	void SetIsHitTrig(bool hitTrig) { mIsHitTrig = hitTrig; }
 
+	/// <summary>
+	/// 次のステートのセット
+	/// </summary>
+	/// <param name="state">セットするステート</param>
+	void SetNextState(EnemyState state) { mNextState = state; }
+
 //ゲッター //
 	SkeletalMeshComponent* GetSkeltalMeshComp() { return mSkelComp; }
 	const Animation* GetAnim(EnemyState state) const { return mAnimations[static_cast<unsigned int>(state)]; }

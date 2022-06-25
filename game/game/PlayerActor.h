@@ -64,6 +64,8 @@ public:
 	/// <returns>接地フラグ</returns>
 	bool GetIsOnGround() { return mIsOnGround; }
 
+	bool GetHitRight() { return mHitRight; }
+
 	/// <summary>
 	/// スケルタルメッシュの取得
 	/// </summary>
@@ -96,6 +98,9 @@ private:
 
 	// 接地しているか
 	bool mIsOnGround;
+
+	// ライトに当たっているか
+	bool mHitRight;
 
 	// アニメーション可変長コンテナ
 	std::vector<const class Animation*> mAnimations;

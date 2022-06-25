@@ -173,6 +173,7 @@
     <ClCompile Include="EffectComponent.cpp" />
     <ClCompile Include="EffekseerEffect.cpp" />
     <ClCompile Include="EnemyActor.cpp" />
+    <ClCompile Include="EnemyManager.cpp" />
     <ClCompile Include="EnemyStateAttack.cpp" />
     <ClCompile Include="EnemyStateDeath.cpp" />
     <ClCompile Include="EnemyStateHit.cpp" />
@@ -239,6 +240,7 @@
     <ClInclude Include="EffectComponent.h" />
     <ClInclude Include="EffekseerEffect.h" />
     <ClInclude Include="EnemyActor.h" />
+    <ClInclude Include="EnemyManager.h" />
     <ClInclude Include="EnemyStateAttack.h" />
     <ClInclude Include="EnemyStateBase.h" />
     <ClInclude Include="EnemyStateDeath.h" />
