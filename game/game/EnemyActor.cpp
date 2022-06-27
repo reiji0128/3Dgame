@@ -200,12 +200,11 @@ void EnemyActor::OnCollisionEnter(ColliderComponent* ownCollider, ColliderCompon
 		}
 	}
 
-	// ƒvƒŒƒCƒ„[‚ÌUŒ‚‚Æ‚Ô‚Â‚©‚Á‚½?
-	if (colliderTag == Tag::PlayerBullet)
+	if (colliderTag == Tag::Light)
 	{
-		if (ownCollider == mHitBox)
+		if (otherCollider->GetColliderType() == ColliderTypeEnum::Sphere)
 		{
-			mIsHitTrig = true;
+			mNextState = EnemyState::STATE_PATROL;
 		}
 	}
 

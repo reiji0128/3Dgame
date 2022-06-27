@@ -19,7 +19,7 @@ enum class Tag : unsigned char
 	Camera,
 	Effect,
 	Switch,
-	Lantern,
+	Light,
 	Receiver,
 
 	End                 // Tagの終了マーカー　（Endより後に定義してはならない）

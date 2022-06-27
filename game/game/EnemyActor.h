@@ -12,6 +12,7 @@ enum class EnemyState
 	STATE_ATTACK,
 	STATE_HIT,
 	STATE_DEATH,
+	STATE_MOVE_LIGHT,
 
 	STATE_NUM
 };

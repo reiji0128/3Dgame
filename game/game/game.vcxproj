@@ -178,6 +178,7 @@
     <ClCompile Include="EnemyStateDeath.cpp" />
     <ClCompile Include="EnemyStateHit.cpp" />
     <ClCompile Include="EnemyStateIdle.cpp" />
+    <ClCompile Include="EnemyStateMoveLight.cpp" />
     <ClCompile Include="EnemyStatePatrol.cpp" />
     <ClCompile Include="EnemyStateRun.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -246,6 +247,7 @@
     <ClInclude Include="EnemyStateDeath.h" />
     <ClInclude Include="EnemyStateHit.h" />
     <ClInclude Include="EnemyStateIdle.h" />
+    <ClInclude Include="EnemyStateMoveLight.h" />
     <ClInclude Include="EnemyStatePatrol.h" />
     <ClInclude Include="EnemyStateRun.h" />
     <ClInclude Include="Game.h" />

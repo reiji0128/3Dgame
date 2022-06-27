@@ -2,12 +2,8 @@
 #include "EnemyActor.h"
 #include "PlayerActor.h"
 
-// エネミーマネージャーのインスタンスへのポインタを定義
-EnemyManager* EnemyManager::mInstance = nullptr;
-
 EnemyManager::EnemyManager()
 {
-	mInstance = nullptr;
 }
 
 EnemyManager::~EnemyManager()
@@ -15,17 +11,13 @@ EnemyManager::~EnemyManager()
 	ReleaseAllEnemy();
 }
 
-void EnemyManager::Initialize()
-{
-	if (!mInstance)
-	{
-		mInstance = new EnemyManager;
-	}
-}
-
 void EnemyManager::Update(float deltaTime)
 {
-	player
+	// プレイヤーがライトに当たっていたらエネミーのステートを変更
+	if(player->GetHitLight())
+	{
+		ChangeEnemyState();
+	}
 }
 
 void EnemyManager::Entry(EnemyActor* entryEnemy)
@@ -41,17 +33,6 @@ void EnemyManager::ReleaseAllEnemy()
 {
 }
 
-void EnemyManager::Finalize()
-{
-	ReleaseAllEnemy();
-
-	if (mInstance)
-	{
-		delete mInstance;
-		mInstance = nullptr;
-	}
-}
-
 /// <summary>
 /// エネミーのステートの変更処理
 /// </summary>
@@ -59,6 +40,6 @@ void EnemyManager::ChangeEnemyState()
 {
 	for (auto enemy : mEnemyList)
 	{
-		enemy->SetNextState(EnemyState::STATE_RUN);
+		enemy->SetNextState(EnemyState::STATE_MOVE_LIGHT);
 	}
 }

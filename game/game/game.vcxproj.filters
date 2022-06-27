@@ -366,6 +366,9 @@
     <ClCompile Include="EnemyManager.cpp">
       <Filter>ソース ファイル\Actor\Enemy</Filter>
     </ClCompile>
+    <ClCompile Include="EnemyStateMoveLight.cpp">
+      <Filter>ソース ファイル\Actor\Enemy\State</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SphereObj.h">
@@ -574,6 +577,9 @@
     </ClInclude>
     <ClInclude Include="EnemyManager.h">
       <Filter>ソース ファイル\Actor\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyStateMoveLight.h">
+      <Filter>ソース ファイル\Actor\Enemy\State</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

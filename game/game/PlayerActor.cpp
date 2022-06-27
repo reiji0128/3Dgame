@@ -163,4 +163,13 @@ void PlayerActor::OnCollisionEnter(ColliderComponent* ownCollider, ColliderCompo
 			ComputeWorldTransform();
 		}
 	}
+
+	// ƒ‰ƒCƒg‚ÌŒõ‚É“–‚½‚Á‚Ä‚¢‚½‚çmHitLight‚ðtrue
+	if (colliderTag == Tag::Light)
+	{
+		if (otherCollider->GetColliderType() == ColliderTypeEnum::Sphere)
+		{
+			mHitLight = true;
+		}
+	}
 }
