@@ -385,16 +385,18 @@ Mesh* Renderer::GetMesh(const std::string& fileName)
 
 void Renderer::AddMeshComponent(MeshComponent* mesh, ShaderTag shaderTag)
 {
-
+	// シェーダータグがスケルタルメッシュ用のシャドウマップならmSkeletalMeshesに追加
 	if(shaderTag == ShaderTag::SkinnedDepthmapAndSkinnedShadowMap)
 	{
 		SkeletalMeshComponent* sk = static_cast<SkeletalMeshComponent*>(mesh);
 		mSkeletalMeshes.emplace_back(sk);
 	}
+	// メッシュ用のシャドウマップならmMeshComponentsに追加
 	else if(shaderTag == ShaderTag::DepthmapAndShadowMap)
 	{
 		mMeshComponents.emplace_back(mesh);
 	}
+	// HDR&BloomシェーダーならmHighLightMeshesに追加
 	else if (shaderTag == ShaderTag::HDRBloomBlend)
 	{
 		mHighLightMeshes.emplace_back(mesh);
@@ -403,18 +405,20 @@ void Renderer::AddMeshComponent(MeshComponent* mesh, ShaderTag shaderTag)
 
 void Renderer::RemoveMeshComponent(MeshComponent* mesh,ShaderTag shaderTag)
 {
+	// シェーダータグがスケルタルメッシュ用のシャドウマップならmSkeletalMeshesから削除
 	if (shaderTag == ShaderTag::SkinnedDepthmapAndSkinnedShadowMap)
-
 	{
 		SkeletalMeshComponent* sk = static_cast<SkeletalMeshComponent*>(mesh);
 		auto iter = std::find(mSkeletalMeshes.begin(), mSkeletalMeshes.end(), sk);
 		mSkeletalMeshes.erase(iter);
 	}
+	// メッシュ用のシャドウマップならmMeshComponentsから削除
 	else if (shaderTag == ShaderTag::DepthmapAndShadowMap)
 	{
 		auto iter = std::find(mMeshComponents.begin(), mMeshComponents.end(), mesh);
 		mMeshComponents.erase(iter);
 	}
+	// // HDR&BloomシェーダーならmHighLightMeshesから削除
 	else if (shaderTag == ShaderTag::HDRBloomBlend)
 	{
 		auto iter = std::find(mHighLightMeshes.begin(), mHighLightMeshes.end(), mesh);

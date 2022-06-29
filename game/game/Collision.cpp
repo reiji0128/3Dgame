@@ -21,6 +21,11 @@ bool Sphere::Contains(const Vector3& point) const
     return distSq <= mRadius * mRadius;
 }
 
+void Sphere::Scaling(const float& scale)
+{
+    mRadius *= scale;
+}
+
 Line::Line()
     :mLineStart(0.0f,0.0f,0.0f)
     ,mLineEnd(0.0f,0.0f,0.0f)
@@ -156,6 +161,17 @@ void AABB::Scaling(float x, float y, float z)
 void AABB::Scaling(float scale)
 {
     Scaling(scale, scale, scale);
+}
+
+void AABB::OffsetPos(float x, float y, float z)
+{
+    mMax.x += x;
+    mMax.y += y;
+    mMax.z += z;
+
+    mMin.x += x;
+    mMin.y += y;
+    mMin.z += z;
 }
 
 Wall::Wall()

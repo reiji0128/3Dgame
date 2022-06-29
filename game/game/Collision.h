@@ -39,6 +39,12 @@ struct Sphere
 	/// </returns>
 	bool Contains(const Vector3& point) const;
 
+	/// <summary>
+	/// スケーリング
+	/// </summary>
+	/// <param name="scale">スケール倍率</param>
+	void Scaling(const float& scale);
+
 	// 中心位置
 	Vector3 mCenter;
 
@@ -145,6 +151,14 @@ struct AABB
 	/// </summary>
 	/// <param name="scale">拡大率</param>
 	void Scaling(float scale);
+
+	/// <summary>
+	/// オフセット位置
+	/// </summary>
+	/// <param name="x">x座標のオフセット位置</param>
+	/// <param name="y">y座標のオフセット位置</param>
+	/// <param name="z">z座標のオフセット位置</param>
+	void OffsetPos(float x, float y, float z);
 
 // セッター //
 	/// <summary>

@@ -79,6 +79,13 @@ protected:
 	/// <returns>衝突したか？</returns>
 	bool Check(LineCollider* other) override;
 
+	/// <summary>
+	/// SphereColliderと衝突したか？
+	/// </summary>
+	/// <param name="other">衝突相手のSphereColliderのポインタ</param>
+	/// <returns></returns>
+	bool Check(SphereCollider* other) override;
+
 	// オブジェクト空間（変換前）のボックス
 	AABB mObjectBox;
 

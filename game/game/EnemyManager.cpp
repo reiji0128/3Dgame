@@ -22,6 +22,8 @@ void EnemyManager::Update(float deltaTime)
 
 void EnemyManager::Entry(EnemyActor* entryEnemy)
 {
+	mEnemyList.push_back(entryEnemy);
+	
 }
 
 void EnemyManager::Release(EnemyActor* releaseEnemy)

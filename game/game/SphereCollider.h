@@ -29,6 +29,11 @@ public:
 	bool CollisionDetection(ColliderComponent* other) override;
 
 // セッター // 
+
+	/// <summary>
+	/// 当たり判定用スフィアをセット
+	/// </summary>
+	/// <param name="sphere"></param>
 	void SetSphere(const Sphere& sphere) { mLocalSphere = sphere; }
 
 // ゲッター //

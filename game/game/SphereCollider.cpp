@@ -26,7 +26,7 @@ void SphereCollider::OnUpdateWorldTransform()
 	mWorldSphere = mLocalSphere;
 	
 	// •½sˆÚ“®ˆ—
-	mWorldSphere.mCenter += mOwner->GetPosition();
+	//mWorldSphere.mCenter += mOwner->GetPosition();
 }
 
 /// <summary>

@@ -7,11 +7,13 @@
 
 
 SphereObj::SphereObj(const Vector3& pos)
-	:Actor(Tag::Lantern)
+	:Actor(Tag::Light)
 	,mShaderTag(ShaderTag::HDRBloomBlend)
 	,mSphereCollider(nullptr)
 {
 	mPosition = pos;
+	SetScale(0.5f);
+
 	Mesh* mesh = RENDERER->GetMesh("Assets/Sphere/Sphere.gpmesh");
 	MeshComponent* mc = new MeshComponent(this, mShaderTag);
 	mc->SetMesh(mesh);

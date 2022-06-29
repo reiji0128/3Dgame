@@ -11,6 +11,7 @@
 #include "EnemyStateAttack.h"
 #include "EnemyStateHit.h"
 #include "EnemyStateDeath.h"
+#include "EnemyStateMoveLight.h"
 
 EnemyActor::EnemyActor(const Vector3& pos, const Vector3& dir)
 	:Actor(Tag::Enemy)
@@ -22,6 +23,7 @@ EnemyActor::EnemyActor(const Vector3& pos, const Vector3& dir)
 	, mIsOnGround(true)
 	, mIsBGTrig(false)
 	, mIsHitTrig(false)
+	, mHitLight(false)
 	, mNowState(EnemyState::STATE_IDLE)
 	, mNextState(EnemyState::STATE_PATROL)
 	, mAimVec(0.0f, 0.0f, 0.0f)
@@ -34,21 +36,22 @@ EnemyActor::EnemyActor(const Vector3& pos, const Vector3& dir)
 	mDirection = dir;
 
 	// メッシュの読み込み
-	Mesh* mesh = RENDERER->GetMesh("Assets/Enemy/BeholderSK.gpmesh");
+	Mesh* mesh = RENDERER->GetMesh("Assets/Enemy/FlyingDemon.gpmesh");
 	mSkelComp = new SkeletalMeshComponent(this,mShaderTag);
 	mSkelComp->SetMesh(mesh);
 
 	// スケルトンの読み込み
-	mSkelComp->SetSkeleton(RENDERER->GetSkeleton("Assets/Enemy/BeholderSK.gpskel"));
+	mSkelComp->SetSkeleton(RENDERER->GetSkeleton("Assets/Enemy/FlyingDemon.gpskel"));
 
 	// アニメーションの取得 & アニメーション配列にセット
 	mAnimations.resize(static_cast<unsigned int>(EnemyState::STATE_NUM));
-	mAnimations[static_cast<unsigned int>(EnemyState::STATE_IDLE)] = RENDERER->GetAnimation("Assets/Enemy/Beholder_IdleAnim.gpanim", true);
-	mAnimations[static_cast<unsigned int>(EnemyState::STATE_PATROL)] = RENDERER->GetAnimation("Assets/Enemy/Beholder_RunAnim.gpanim", true);
-	mAnimations[static_cast<unsigned int>(EnemyState::STATE_RUN)] = RENDERER->GetAnimation("Assets/Enemy/Beholder_RunAnim.gpanim", true);
-	mAnimations[static_cast<unsigned int>(EnemyState::STATE_ATTACK)] = RENDERER->GetAnimation("Assets/Enemy/Beholder_AttackAnim.gpanim", false);
+	mAnimations[static_cast<unsigned int>(EnemyState::STATE_IDLE)] = RENDERER->GetAnimation("Assets/Enemy/FlyingDemon_IdleAnim.gpanim", true);
+	mAnimations[static_cast<unsigned int>(EnemyState::STATE_PATROL)] = RENDERER->GetAnimation("Assets/Enemy/FlyingDemon_WalkAnim.gpanim", true);
+	mAnimations[static_cast<unsigned int>(EnemyState::STATE_RUN)] = RENDERER->GetAnimation("Assets/Enemy/FlyingDemon_RunAnim.gpanim", true);
+	mAnimations[static_cast<unsigned int>(EnemyState::STATE_ATTACK)] = RENDERER->GetAnimation("Assets/Enemy/FlyingDemon_AttackAnim.gpanim", false);
 	mAnimations[static_cast<unsigned int>(EnemyState::STATE_HIT)] = RENDERER->GetAnimation("Assets/Enemy/Beholder_DieAnim.gpanim", false);
-	mAnimations[static_cast<unsigned int>(EnemyState::STATE_DEATH)] = RENDERER->GetAnimation("Assets/Enemy/Beholder_DieAnim.gpanim", false);
+	mAnimations[static_cast<unsigned int>(EnemyState::STATE_DEATH)] = RENDERER->GetAnimation("Assets/Enemy/FlyingDemon_DieAnim.gpanim", false);
+	mAnimations[static_cast<unsigned int>(EnemyState::STATE_MOVE_LIGHT)] = RENDERER->GetAnimation("Assets/Enemy/FlyingDemon_RunAnim.gpanim", true);
 
 
 	// アイドル状態のアニメーションをセット
@@ -61,6 +64,7 @@ EnemyActor::EnemyActor(const Vector3& pos, const Vector3& dir)
 	mStatePools.push_back(new EnemyStateAttack);
 	mStatePools.push_back(new EnemyStateHit);
 	mStatePools.push_back(new EnemyStateDeath);
+	mStatePools.push_back(new EnemyStateMoveLight);
 
 	// 当たり判定のセット
 	AABB box = mesh->GetCollisionBox();
@@ -204,9 +208,9 @@ void EnemyActor::OnCollisionEnter(ColliderComponent* ownCollider, ColliderCompon
 	{
 		if (otherCollider->GetColliderType() == ColliderTypeEnum::Sphere)
 		{
-			mNextState = EnemyState::STATE_PATROL;
+			mHitLight = true;
 		}
 	}
 
-	//mIsHitTrig = false;
+	mHitLight = false;
 }

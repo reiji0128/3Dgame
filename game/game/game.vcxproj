@@ -188,7 +188,6 @@
     <ClCompile Include="HDR.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="InputController.cpp" />
-    <ClCompile Include="Lantern.cpp" />
     <ClCompile Include="LineCollider.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Math.cpp" />
@@ -257,7 +256,6 @@
     <ClInclude Include="HDR.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="InputController.h" />
-    <ClInclude Include="Lantern.h" />
     <ClInclude Include="LineCollider.h" />
     <ClInclude Include="Math.h" />
     <ClInclude Include="MatrixPalette.h" />

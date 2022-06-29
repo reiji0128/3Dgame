@@ -45,8 +45,8 @@ PlayerActor::PlayerActor(const Vector3& pos, const float& scale, const char* gpm
 	
 	// アニメーションの読み込み
 	mAnimations.resize(static_cast<unsigned int>(PlayerState::STATE_NUM));
-	mAnimations[static_cast<unsigned int>(PlayerState::STATE_IDLE)] = RENDERER->GetAnimation("Assets/Player/Rifle_Idle.gpanim", true);
-	mAnimations[static_cast<unsigned int>(PlayerState::STATE_RUN)]  = RENDERER->GetAnimation("Assets/Player/Walk_Forward.gpanim", true);
+	mAnimations[static_cast<unsigned int>(PlayerState::STATE_IDLE)] = RENDERER->GetAnimation("Assets/Player/Sword_And_Shield_IdleAnim.gpanim", true);
+	mAnimations[static_cast<unsigned int>(PlayerState::STATE_RUN)]  = RENDERER->GetAnimation("Assets/Player/Sword_And_Shield_RunAnim.gpanim", true);
 	
 	// アイドル状態のアニメーションをセット
 	mSkeltalMeshComp->PlayAnimation(mAnimations[static_cast<unsigned int>(PlayerState::STATE_IDLE)]);
@@ -58,6 +58,7 @@ PlayerActor::PlayerActor(const Vector3& pos, const float& scale, const char* gpm
 	// 当たり判定のセット
 	AABB box = mesh->GetCollisionBox();
 	box.Scaling(1.0f,1.0f,1.0f);
+	box.OffsetPos(0.0f, 0.0f, 80.0f);
 	mBoxCollider = new BoxCollider(this);
 	mBoxCollider->SetObjectBox(box);
 
@@ -118,7 +119,7 @@ void PlayerActor::OnCollisionEnter(ColliderComponent* ownCollider, ColliderCompo
 		if (otherCollider->GetColliderType() == ColliderTypeEnum::Box)
 		{
 			// 背景Boxに衝突したのはLine?
-			if (ownCollider == mLineCollider)
+			if (ownCollider->GetColliderType() == ColliderTypeEnum::Line)
 			{
 				//落下しているときのみ判定
 				if (mVelocity.z < 0.0f)
@@ -127,15 +128,6 @@ void PlayerActor::OnCollisionEnter(ColliderComponent* ownCollider, ColliderCompo
 					mPosition = info.mCollisionPoint;
 					mIsOnGround = true;
 				}
-			}
-
-			// 足元コライダー
-			if (ownCollider == mLineCollider)
-			{
-				info = ownCollider->GetCollisionInfo();
-				mPosition = info.mCollisionPoint;
-				mIsOnGround = true;
-				ComputeWorldTransform();
 			}
 
 			// 背景Boxに衝突したのもBox？
@@ -172,4 +164,6 @@ void PlayerActor::OnCollisionEnter(ColliderComponent* ownCollider, ColliderCompo
 			mHitLight = true;
 		}
 	}
+
+	mHitLight = false;
 }

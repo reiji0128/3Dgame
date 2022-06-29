@@ -357,9 +357,6 @@
     <ClCompile Include="Receiver.cpp">
       <Filter>ソース ファイル\Actor\BackGroundActor\StaticBGActor</Filter>
     </ClCompile>
-    <ClCompile Include="Lantern.cpp">
-      <Filter>ソース ファイル\Actor\Attach</Filter>
-    </ClCompile>
     <ClCompile Include="PlayerStateJump.cpp">
       <Filter>ソース ファイル\Actor\Player\State</Filter>
     </ClCompile>
@@ -568,9 +565,6 @@
     </ClInclude>
     <ClInclude Include="PlayerStateJump.h">
       <Filter>ソース ファイル\Actor\Player\State</Filter>
-    </ClInclude>
-    <ClInclude Include="Lantern.h">
-      <Filter>ソース ファイル\Actor\Attach</Filter>
     </ClInclude>
     <ClInclude Include="PlayerStateJumpLoop.h">
       <Filter>ソース ファイル\Actor\Player\State</Filter>

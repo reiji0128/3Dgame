@@ -49,6 +49,7 @@ public:
 	const Animation* GetAnim(EnemyState state) const { return mAnimations[static_cast<unsigned int>(state)]; }
 	const bool GetIsBGTrig() const { return mIsBGTrig; }
 	const bool GetIsHitTrig() const { return mIsHitTrig; }
+	const bool GetHitLight() const { return mHitLight; }
 	const Vector3& GetVelosity() const { return mVelocity; }
 	void SetVelosity(Vector3 velosity) { mVelocity = velosity; }
 
@@ -68,6 +69,7 @@ private:
 	bool                                mIsBGTrig; // 背景ボックスとヒットしたか？
 	bool                                mIsHitTrig; // アタックオブジェクトとヒットしたか？
 	bool                                mRotateNow; // 回転中か
+	bool                                mHitLight;
 	EnemyState                             mNowState; // 現在のステート
 	EnemyState                             mNextState; // 次のステート
 	float                               mStateTimer; // ステート内の経過時刻を測る雑用タイマー  

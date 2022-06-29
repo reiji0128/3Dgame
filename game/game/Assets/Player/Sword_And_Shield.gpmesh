@@ -3,7 +3,7 @@
 	"vertexformat":"PosNormSkinTex",
 	"shader":"Skinned",
 	"textures":[
-		"Assets/Sword_And_Shield.png"
+		"Assets/Player/Sword_And_Shield.png"
 	],
 	"specularPower":100.0,
 	"vertices":[

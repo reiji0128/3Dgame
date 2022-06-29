@@ -18,6 +18,12 @@ EnemyState EnemyStateMoveLight::Update(EnemyActor* owner, float deltaTime)
 	float length = enemyToLightVec.Length();
 
 	MoveCalc(owner, deltaTime);
+
+	if (owner->GetHitLight())
+	{
+		return EnemyState::STATE_PATROL;
+	}
+
 	return EnemyState::STATE_MOVE_LIGHT;
 }
 

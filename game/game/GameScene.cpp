@@ -47,16 +47,13 @@ GameScene::GameScene()
 	dir.mDiffuseColor = Vector3(0.78f, 0.88f, 1.0f);
 	dir.mSpecColor = Vector3(0.8f, 0.8f, 0.8f);
 	Vector3 lightDir = dir.mDirection;
-	RENDERER->SetDepthSetting(Vector3(890, -130, 20), lightDir, Vector3::UnitZ, mLightDistance);
-
-	mTex = new Texture;
-	mTex = RENDERER->GetTexture("Assets/Player/Health.png");
+	RENDERER->SetDepthSetting(Vector3(0, 0, 0), lightDir, Vector3::UnitZ, mLightDistance);
 
 	// プレイヤーの生成
-	player = new PlayerActor(Vector3(0.0, 0.0, 0.0),                // 座標
-	                       	 1.0,                                   // スケール
-	                         "Assets/Player/SpecialForces.gpmesh",  // gpMeshのファイルパス
-	                         "Assets/Player/SpecialForces.gpskel"); // gpSkelのファイルパス
+	player = new PlayerActor(Vector3(0.0, 0.0, -17.0),                 // 座標
+	                       	 1.0,                                      // スケール
+	                         "Assets/Player/Sword_And_Shield.gpmesh",  // gpMeshのファイルパス
+	                         "Assets/Player/Sword_And_Shield.gpskel"); // gpSkelのファイルパス
 
     // カメラの生成
 	ThirdPersonCameraActor* camera = new ThirdPersonCameraActor(player);
@@ -65,7 +62,7 @@ GameScene::GameScene()
 	// バックグラウンドの生成
 	new StaticBGActor(Vector3(0.0, 0.0, 0.0), "Assets/BackGround/BackGround.gpmesh");
 	
-	new SphereObj(Vector3(0.0, 0.0, 0.0));
+	new SphereObj(Vector3(10.0, 0.0, 0.0));
 
 	// スイッチの生成
 	//SwitchActor* sw = new SwitchActor(Vector3(0, 0, 0), "Assets/Crystal/Crystal.gpmesh", false);
@@ -84,6 +81,7 @@ GameScene::GameScene()
 	GAMEINSTANCE.GetPhysics()->SetOneSideReactionCollisionPair(Tag::BackGround, Tag::Enemy);
 	GAMEINSTANCE.GetPhysics()->SetOneSideReactionCollisionPair(Tag::ChangeBackGround, Tag::Player);
 	GAMEINSTANCE.GetPhysics()->SetOneSideReactionCollisionPair(Tag::Switch, Tag::Player);
+	GAMEINSTANCE.GetPhysics()->SetOneSideReactionCollisionPair(Tag::Light, Tag::Player);
 }
 
 GameScene::~GameScene()

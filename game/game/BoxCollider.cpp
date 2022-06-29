@@ -5,6 +5,7 @@
 #include "PhysicsWorld.h"
 #include "WallCollider.h"
 #include "LineCollider.h"
+#include "SphereCollider.h"
 
 /// <summary>
 /// コンストラクタ
@@ -129,4 +130,26 @@ bool BoxCollider::Check(LineCollider* other)
 		return true;
 	}
 	return false;
+}
+
+/// <summary>
+/// SphereColliderと衝突したか？
+/// </summary>
+/// <param name="other">衝突相手のSphereColliderのポインタ</param>
+/// <returns>
+/// true  : 衝突した
+/// false : 衝突していない
+/// </returns>
+bool BoxCollider::Check(SphereCollider* other)
+{
+	AABB ownBox;
+	Sphere otherSphere;
+	CollisionInfo info;
+
+	ownBox = GetWorldBox();
+	otherSphere = other->GetSphere();
+	
+	bool ret = Intersect(otherSphere, ownBox);
+
+	return ret;
 }
