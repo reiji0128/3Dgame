@@ -9,7 +9,7 @@
 class SwitchActor : public Actor
 {
 public:
-	SwitchActor(const Vector3& position, const char* gpmeshFileName,bool switchFlag);
+	SwitchActor(const Vector3& pos, const char* gpmeshFileName,bool switchFlag);
 
 	~SwitchActor();
 
@@ -24,13 +24,13 @@ public:
 
 private:
 	// スイッチフラグ
-	bool mChangeBackGroundFlag;
+	bool mSwitchFlag;
 
 	// 適用するシェーダーのタグ
 	ShaderTag mShaderTag;
 
-	// ボックスコライダーのポインタ
-	class BoxCollider* mBoxCollider;
+	// トリガー用のスフィアコライダー
+	SphereCollider* mSphereCollider;
 
 	std::vector<Receiver*> mReceiverManager;
 };

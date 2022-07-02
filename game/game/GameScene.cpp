@@ -65,11 +65,11 @@ GameScene::GameScene()
 	new SphereObj(Vector3(10.0, 0.0, 0.0));
 
 	// スイッチの生成
-	//SwitchActor* sw = new SwitchActor(Vector3(0, 0, 0), "Assets/Crystal/Crystal.gpmesh", false);
+	SwitchActor* sw = new SwitchActor(Vector3(0, 0, 0), "Assets/Sphere/Sphere.gpmesh", false);
 
-	//ChangeBGActor* changeBG = new ChangeBGActor(Vector3(0, 0, 0), "Assets/BackGround/Mesh_Dungeons_Floor.gpmesh");
+	ChangeBGActor* changeBG = new ChangeBGActor(Vector3(0, 0, 0), "Assets/BackGround/Mesh_Dungeons_Floor.gpmesh");
 
-	//sw->AddReceiver(changeBG);
+	sw->AddReceiver(changeBG);
 
 	// バックグラウンドの当たり判定の生成
 	new BGCollisionSetter("Assets/BackGround/BackGroundCollisionBox.json");
@@ -101,6 +101,7 @@ SceneBase* GameScene::Update()
 		GAMEINSTANCE.GetPhysics()->ToggleDebugMode();
 	}
 
+	// デプスマップで必要なライト情報をセット
 	DirectionalLight dirLight = RENDERER->GetDirectionalLight();
 	Vector3 lightDir = dirLight.mDirection;
 	Vector3 playerPos = player->GetPosition();
@@ -122,15 +123,19 @@ void GameScene::Draw()
 
 	// 2D描画の開始処理
 	RENDERER->SpriteDrawBegin();
+	{
 
+	}
 	// 2D描画の終了処理
 	RENDERER->SpriteDrawEnd();
 
 // エフェクト関連の処理 //
 	// エフェクト描画の開始処理
 	RENDERER->GetEffekseerRenderer()->BeginRendering();
-	RENDERER->GetEffekseerManager()->Draw();
-	// エフェクト描画の終了処理
+	{
+		RENDERER->GetEffekseerManager()->Draw();
+		// エフェクト描画の終了処理
+	}
 	RENDERER->GetEffekseerRenderer()->EndRendering();
 
 	// 画面フリップ

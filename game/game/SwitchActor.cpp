@@ -3,26 +3,26 @@
 #include "Renderer.h"
 #include "Mesh.h"
 #include "MeshComponent.h"
-#include "BoxCollider.h"
+#include "SphereCollider.h"
 #include "Input.h"
 
-SwitchActor::SwitchActor(const Vector3& position, const char* gpmeshFileName,bool switchFlag)
-	:Actor(Tag::Switch)
-	,mShaderTag(ShaderTag::DepthmapAndShadowMap)
-	,mBoxCollider(nullptr)
-	,mChangeBackGroundFlag(switchFlag)
+SwitchActor::SwitchActor(const Vector3& pos, const char* gpmeshFileName,bool switchFlag)
+	:Actor(Tag::Light)
+	,mShaderTag(ShaderTag::HDRBloomBlend)
+	,mSphereCollider(nullptr)
+	,mSwitchFlag(switchFlag)
 {
-	mPosition = position;
+	mPosition = pos;
 
 	// メッシュの読み込み・セット
 	Mesh* mesh = RENDERER->GetMesh(gpmeshFileName);
 	MeshComponent* mc = new MeshComponent(this, mShaderTag);
+	mc->SetMesh(mesh);
 
-	// 当たり判定のセット
-	AABB box = mesh->GetCollisionBox();
-	box.Scaling(1.0f);
-	mBoxCollider = new BoxCollider(this);
-	mBoxCollider->SetObjectBox(box);
+	// トリガー用のスフィアを作成
+	Sphere sphere(mPosition, mesh->GetRadius());
+	mSphereCollider = new SphereCollider(this);
+	mSphereCollider->SetSphere(sphere);
 }
 
 SwitchActor::~SwitchActor()
@@ -31,7 +31,7 @@ SwitchActor::~SwitchActor()
 
 void SwitchActor::UpdateActor(float deltaTime)
 {
-	if (mChangeBackGroundFlag)
+	if (mSwitchFlag)
 	{
 		ChangeState();
 	}
@@ -52,7 +52,7 @@ void SwitchActor::OnCollisionEnter(ColliderComponent* ownCollider, ColliderCompo
 	{
 		if (INPUT_INSTANCE.IsKeyOff(KEY_START))
 		{
-			mChangeBackGroundFlag = true;
+			mSwitchFlag = true;
 		}
 	}
 }

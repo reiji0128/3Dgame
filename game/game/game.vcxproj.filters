@@ -169,6 +169,12 @@
     <Filter Include="ソース ファイル\Actor\Attach">
       <UniqueIdentifier>{ae9b106b-24e9-4c74-b950-d1ef64d960ca}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Component\LoopMotionComponent">
+      <UniqueIdentifier>{14ede3ea-c38e-48d0-b8a6-7dca3addddab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Actor\BackGroundActor\MoveBGActor">
+      <UniqueIdentifier>{3574e003-d7d1-4036-8a17-8a34248c7b78}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SphereObj.cpp">
@@ -365,6 +371,15 @@
     </ClCompile>
     <ClCompile Include="EnemyStateMoveLight.cpp">
       <Filter>ソース ファイル\Actor\Enemy\State</Filter>
+    </ClCompile>
+    <ClCompile Include="LoopMotionComponent.cpp">
+      <Filter>ソース ファイル\Component\LoopMotionComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="UIManager.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="MoveBGActor.cpp">
+      <Filter>ソース ファイル\Actor\BackGroundActor\MoveBGActor</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -574,6 +589,15 @@
     </ClInclude>
     <ClInclude Include="EnemyStateMoveLight.h">
       <Filter>ソース ファイル\Actor\Enemy\State</Filter>
+    </ClInclude>
+    <ClInclude Include="LoopMotionComponent.h">
+      <Filter>ソース ファイル\Component\LoopMotionComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="UIManager.h">
+      <Filter>ソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="MoveBGActor.h">
+      <Filter>ソース ファイル\Actor\BackGroundActor\MoveBGActor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
