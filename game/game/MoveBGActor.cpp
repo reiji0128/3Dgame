@@ -20,13 +20,17 @@ MoveBGActor::MoveBGActor(const Vector3& startPos, const Vector3& endPos, const f
 
 	//“–‚½‚è”»’è‚ÌƒZƒbƒg
 	AABB box = mesh->GetCollisionBox();
-	box.Scaling(1.0f, 1.0f, 2.5f);
+	box.Scaling(1.0f, 1.0f, 1.0f);
 	box.mIsRotatable = false;
 	mBoxCollider = new BoxCollider(this);
 	mBoxCollider->SetObjectBox(box);
 
 	mTag = Tag::MoveFloor;
 	mMoveFlag = false;
+
+	mDirection = Vector3(1, 0, 0);
+
+	mNowState = SwitchState::OFF;
 }
 
 MoveBGActor::~MoveBGActor()

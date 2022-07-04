@@ -45,6 +45,8 @@ public:
 	/// <param name="visible"></param>
 	void SetVisible(bool visible) { mVisible = visible; }
 
+	void SetChangeLuminance(bool change) { mChangeLuminance = change; }
+
 // ゲッター //
 	/// <summary>
 	/// 表示フラグの取得
@@ -58,6 +60,8 @@ public:
 	/// <returns></returns>
 	bool GetIsSkeletal() const { return mIsSkeletal; }
 
+	bool GetChangeLuminance() const { return mChangeLuminance; }
+
 protected:
 	// Meshクラスのポインタ
 	class Mesh* mMesh;
@@ -70,6 +74,9 @@ protected:
 
 	// スケルタルモデルかどうかのフラグ
 	bool mIsSkeletal;
+
+	// 輝度の変更フラグ
+	bool mChangeLuminance;
 
 	ShaderTag mShaderTag;
 };

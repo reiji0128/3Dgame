@@ -22,7 +22,7 @@ public:
 // ゲッター //
 	SwitchState GetSwitchState() { return mNowState; }
 
-private:
+protected:
 
 	// スイッチの現在の状態
 	SwitchState mNowState;

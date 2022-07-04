@@ -275,13 +275,19 @@ void Renderer::Draw()
 		mHighLightShader->SetActive();
 		mHighLightShader->SetMatrixUniform("uViewProj", mView * mProjection);
 		mHighLightShader->SetVectorUniform("color", lightColor);
-		mHighLightShader->SetFloatUniform("luminance", 15.0f);
+		mHighLightShader->SetFloatUniform("luminance", 1.0f);
 		// 全てのメッシュコンポーネントを描画
 		for (auto mc : mHighLightMeshes)
 		{
 			if (mc->GetVisible())
 			{
+				// フラグがtrueなら輝度を変更
+				if (mc->GetChangeLuminance())
+				{
+					mHighLightShader->SetFloatUniform("luminance", 15.0f);
+				}
 				mc->Draw(mHighLightShader);
+				mHighLightShader->SetFloatUniform("luminance", 1.0f);
 			}
 		}
 	}

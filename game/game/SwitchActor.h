@@ -7,7 +7,7 @@
 #include <vector>
 
 class SphereCollider;
-class BoxCollider;
+class MeshComponent;
 
 class SwitchActor : public Actor
 {
@@ -32,10 +32,11 @@ private:
 	// 適用するシェーダーのタグ
 	ShaderTag mShaderTag;
 
+	// メッシュコンポーネントのポインタ
+	MeshComponent* mMeshComp;
+
 	// トリガー用のスフィアコライダー
 	SphereCollider* mSphereCollider;
-
-	BoxCollider* mBoxCollider;
 
 	std::vector<Receiver*> mReceiverManager;
 };

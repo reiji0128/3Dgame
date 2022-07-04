@@ -164,7 +164,6 @@
     <ClCompile Include="BoxCollider.cpp" />
     <ClCompile Include="ButtonSprite.cpp" />
     <ClCompile Include="CameraActor.cpp" />
-    <ClCompile Include="ChangeBGActor.cpp" />
     <ClCompile Include="ChangeMeshComponent.cpp" />
     <ClCompile Include="ColliderComponent.cpp" />
     <ClCompile Include="Collision.cpp" />
@@ -243,7 +242,6 @@
     <ClInclude Include="BoxCollider.h" />
     <ClInclude Include="ButtonSprite.h" />
     <ClInclude Include="CameraActor.h" />
-    <ClInclude Include="ChangeBGActor.h" />
     <ClInclude Include="ChangeMeshComponent.h" />
     <ClInclude Include="ColliderComponent.h" />
     <ClInclude Include="Collision.h" />

@@ -151,9 +151,6 @@
     <Filter Include="ソース ファイル\Actor\BackGroundActor\StaticBGActor">
       <UniqueIdentifier>{6bb70bcc-531c-4e16-ad12-8949c11c96ba}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\Actor\BackGroundActor\ChangeBGActor">
-      <UniqueIdentifier>{ae55b362-f22e-4f93-902e-56dbd325da48}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ソース ファイル\Actor\BackGroundActor\SwitchActor">
       <UniqueIdentifier>{93ae21b4-bfa9-4033-9b2c-d88ea7ca2de1}</UniqueIdentifier>
     </Filter>
@@ -360,9 +357,6 @@
     <ClCompile Include="StaticBGActor.cpp">
       <Filter>ソース ファイル\Actor\BackGroundActor\StaticBGActor</Filter>
     </ClCompile>
-    <ClCompile Include="ChangeBGActor.cpp">
-      <Filter>ソース ファイル\Actor\BackGroundActor\ChangeBGActor</Filter>
-    </ClCompile>
     <ClCompile Include="SwitchActor.cpp">
       <Filter>ソース ファイル\Actor\BackGroundActor\SwitchActor</Filter>
     </ClCompile>
@@ -381,26 +375,26 @@
     <ClCompile Include="LoopMotionComponent.cpp">
       <Filter>ソース ファイル\Component\LoopMotionComponent</Filter>
     </ClCompile>
-    <ClCompile Include="ButtonSprite.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="PlaySceneUI.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="PlayerStateJumpStart.cpp">
       <Filter>ソース ファイル\Actor\Player\State</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerStateJumpLoop.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerStateJumpEnd.cpp">
-      <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="MoveBGActor.cpp">
       <Filter>ソース ファイル\Actor\BackGroundActor\MoveBGActor</Filter>
     </ClCompile>
     <ClCompile Include="DoorActor.cpp">
       <Filter>ソース ファイル\Actor\BackGroundActor\DoorActor</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerStateJumpEnd.cpp">
+      <Filter>ソース ファイル\Actor\Player\State</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerStateJumpLoop.cpp">
+      <Filter>ソース ファイル\Actor\Player\State</Filter>
+    </ClCompile>
+    <ClCompile Include="ButtonSprite.cpp">
+      <Filter>ソース ファイル\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="PlaySceneUI.cpp">
+      <Filter>ソース ファイル\UI\PlaySceneUI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -586,9 +580,6 @@
     </ClInclude>
     <ClInclude Include="StaticBGActor.h">
       <Filter>ソース ファイル\Actor\BackGroundActor\StaticBGActor</Filter>
-    </ClInclude>
-    <ClInclude Include="ChangeBGActor.h">
-      <Filter>ソース ファイル\Actor\BackGroundActor\ChangeBGActor</Filter>
     </ClInclude>
     <ClInclude Include="SwitchActor.h">
       <Filter>ソース ファイル\Actor\BackGroundActor\SwitchActor</Filter>

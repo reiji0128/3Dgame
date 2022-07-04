@@ -111,7 +111,7 @@ void PlayerActor::UpdateActor(float deltaTime)
 		mNowState = mNextState;
 	}
 
-	printf("%f,%f,%f\n", mPosition.x, mPosition.y, mPosition.z);
+	//printf("%f,%f,%f\n", mPosition.x, mPosition.y, mPosition.z);
 }
 
 /// <summary>

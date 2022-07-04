@@ -61,14 +61,19 @@ GameScene::GameScene()
 
 	// バックグラウンドの生成
 	new StaticBGActor(Vector3(0.0, 0.0, 0.0), "Assets/BackGround/BackGround.gpmesh");
-	
-	//new SphereObj(Vector3(10.0, 0.0, 0.0));
 
 	// スイッチの生成
-	SwitchActor* sw = new SwitchActor(Vector3(-3623.0, -382.0, 520.0), "Assets/Sphere/Sphere.gpmesh", false);
-	MoveBGActor* moveBG = new MoveBGActor(Vector3(-3215.0, -125.0, 470.0), Vector3(-4000.0, 34.0, 470.0), 10, "Assets/BackGround/MoveBlock.gpmesh");
+	SwitchActor* firstSw = new SwitchActor(Vector3(-3623.0, -382.0, 520.0), "Assets/Sphere/Sphere.gpmesh", false);
+	SwitchActor* secondSw = new SwitchActor(Vector3(-3423.0, -382.0, 520.0), "Assets/Sphere/Sphere.gpmesh", false);
+	SwitchActor* thirdSw = new SwitchActor(Vector3(-3023.0, -382.0, 520.0), "Assets/Sphere/Sphere.gpmesh", false);
+
+
+	// レシーバーの作成
+	MoveBGActor* moveBG = new MoveBGActor(Vector3(-3215.0, -125.0, 420.0), Vector3(-3300.0, 34.0, 420.0), 10, "Assets/BackGround/MoveBlock.gpmesh");
 	moveBG->SetScale(4.0f);
-	sw->AddReceiver(moveBG);
+
+	// スイッチに対応するレシーバーを登録
+	firstSw->AddReceiver(moveBG);
 
 	// バックグラウンドの当たり判定の生成
 	new BGCollisionSetter("Assets/BackGround/BackGroundCollision.json");
@@ -80,6 +85,7 @@ GameScene::GameScene()
 	GAMEINSTANCE.GetPhysics()->SetOneSideReactionCollisionPair(Tag::ChangeBackGround, Tag::Player);
 	GAMEINSTANCE.GetPhysics()->SetOneSideReactionCollisionPair(Tag::Switch, Tag::Player);
 	GAMEINSTANCE.GetPhysics()->SetOneSideReactionCollisionPair(Tag::Light, Tag::Player);
+	GAMEINSTANCE.GetPhysics()->SetOneSideReactionCollisionPair(Tag::Player, Tag::Light);
 }
 
 GameScene::~GameScene()
