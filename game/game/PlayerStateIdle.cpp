@@ -27,10 +27,17 @@ PlayerState PlayerStateIdle::Update(PlayerActor* owner, float deltaTime)
                   INPUT_INSTANCE.IsKeyOff(KEY_D) &
                   isControllerInputoff;
 
+    bool IsJump = INPUT_INSTANCE.IsKeyOff(KEY_SPACE);
+
     // ˆÚ“®“ü—Í‚ª‚³‚ê‚½‚©
     if (!IsIdle)
     {
         return PlayerState::STATE_RUN;
+    }
+
+    if (!IsJump && owner->GetIsOnGround())
+    {
+        return PlayerState::STATE_JUMPSTART;
     }
 
     return PlayerState::STATE_IDLE;

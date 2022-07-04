@@ -1,32 +1,25 @@
 #pragma once
-#include "Actor.h"
+#include "Receiver.h"
 #include "ShaderTag.h"
 
-// 移動する方向軸
-enum DirectionMovement
-{
-	XAxis,
-	YAxis,
-	ZAxis,
-};
-
-class MoveBGActor :public Actor
+class MoveBGActor : public Receiver
 {
 public:
-
-	/// <summary>
-	/// コンストラクタ
-	/// </summary>
-	/// <param name="position">位置</param>
-	/// <param name="gpmeshFileName">メッシュのファイルパス</param>
-	MoveBGActor(const Vector3& position, const char* gpmeshFileName);
-
-	/// <summary>
-	/// デストラクタ
-	/// </summary>
+	MoveBGActor(const Vector3& startPos, const Vector3& endPos,const float mSpeed,const char* gpmeshFileName);
 	~MoveBGActor();
 
+	void UpdateActor(float deltaTime);
+
 private:
-	// 適用するシェーダーのタグ
+	Vector3 mStartPos;
+	Vector3 mEndPos;
+	Vector3 mTempPos;
+	Vector3 mVelosity;
+	Vector3 mAimPos;
+
 	ShaderTag mShaderTag;
+
+	bool mMoveFlag;
+
+	class BoxCollider* mBoxCollider; // 当たり判定
 };

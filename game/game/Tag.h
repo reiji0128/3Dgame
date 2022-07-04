@@ -21,6 +21,8 @@ enum class Tag : unsigned char
 	Switch,
 	Light,
 	Receiver,
+	UI,
+	MoveFloor,
 
 	End                 // Tagの終了マーカー　（Endより後に定義してはならない）
 };

@@ -49,15 +49,30 @@ public:
 	void OnCollisionEnter(class ColliderComponent* ownCollider, class ColliderComponent* otherCollider)override;
 
 // セッター //
+
+	/// <summary>
+	/// 加速度のセット
+	/// </summary>
+	/// <param name="velosity">セットする加速度</param>
+	void SetVelocity(const Vector3& velosity) { mVelocity = velosity; }
+
 	/// <summary>
 	/// 接地フラグのセット
 	/// </summary>
-	/// <param name="IsOnGround">false : 接地していない
-	///                          true  : 接地している
+	/// <param name="IsOnGround">
+	/// false : 接地していない
+	/// true  : 接地している
 	/// </param>
-	bool SetIsGround(bool IsOnGround) { mIsOnGround = IsOnGround; }
+	void SetIsGround(bool IsOnGround) { mIsOnGround = IsOnGround; }
 
 // ゲッター //
+
+	/// <summary>
+	/// 加速度の取得
+	/// </summary>
+	/// <returns>加速度</returns>
+	const Vector3& GetVelocity() const { return mVelocity; }
+
 	/// <summary>
 	/// 接地フラグのゲッター
 	/// </summary>

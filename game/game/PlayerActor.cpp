@@ -7,8 +7,12 @@
 #include "Animation.h"
 #include "LineCollider.h"
 #include "ThirdPersonCameraActor.h"
+
 #include "PlayerStateIdle.h"
 #include "PlayerStateRun.h"
+#include "PlayerStateJumpStart.h"
+#include "PlayerStateJumpLoop.h"
+#include "PlayerStateJumpEnd.h"
 
 /// <summary>
 /// コンストラクタ
@@ -25,6 +29,7 @@ PlayerActor::PlayerActor(const Vector3& pos, const float& scale, const char* gpm
 	, mBoneIndex(0)
 	, mNowState()
 	, mNextState()
+	, mIsOnGround(true)
 	, mShaderTag(ShaderTag::SkinnedDepthmapAndSkinnedShadowMap)
 {
 	// 座標のセット
@@ -47,13 +52,20 @@ PlayerActor::PlayerActor(const Vector3& pos, const float& scale, const char* gpm
 	mAnimations.resize(static_cast<unsigned int>(PlayerState::STATE_NUM));
 	mAnimations[static_cast<unsigned int>(PlayerState::STATE_IDLE)] = RENDERER->GetAnimation("Assets/Player/Sword_And_Shield_IdleAnim.gpanim", true);
 	mAnimations[static_cast<unsigned int>(PlayerState::STATE_RUN)]  = RENDERER->GetAnimation("Assets/Player/Sword_And_Shield_RunAnim.gpanim", true);
-	
+	mAnimations[static_cast<unsigned int>(PlayerState::STATE_JUMPSTART)] = RENDERER->GetAnimation("Assets/Player/Sword_And_Shield_Jump.gpanim", false);
+	mAnimations[static_cast<unsigned int>(PlayerState::STATE_JUMPLOOP)] = RENDERER->GetAnimation("Assets/Player/Fall_B_Loop.gpanim", true);
+	mAnimations[static_cast<unsigned int>(PlayerState::STATE_JUMPEND)] = RENDERER->GetAnimation("Assets/Player/Fall_A_Land_To_Standing_Idle_01.gpanim", false);
+
+
 	// アイドル状態のアニメーションをセット
 	mSkeltalMeshComp->PlayAnimation(mAnimations[static_cast<unsigned int>(PlayerState::STATE_IDLE)]);
 	
 	// アクターステートプールの初期化
 	mStatePools.push_back(new PlayerStateIdle);
 	mStatePools.push_back(new PlayerStateRun);
+	mStatePools.push_back(new PlayerStateJumpStart);
+	mStatePools.push_back(new PlayerStateJumpLoop);
+	mStatePools.push_back(new PlayerStateJumpEnd);
 
 	// 当たり判定のセット
 	AABB box = mesh->GetCollisionBox();
@@ -98,6 +110,8 @@ void PlayerActor::UpdateActor(float deltaTime)
 		mStatePools[static_cast<unsigned int>(mNextState)]->Enter(this, deltaTime);
 		mNowState = mNextState;
 	}
+
+	printf("%f,%f,%f\n", mPosition.x, mPosition.y, mPosition.z);
 }
 
 /// <summary>

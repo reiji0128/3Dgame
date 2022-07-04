@@ -166,14 +166,23 @@
     <Filter Include="ソース ファイル\Actor\Enemy\State">
       <UniqueIdentifier>{1242ee22-45b6-47cd-82a3-e9559cb5758a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\Actor\Attach">
-      <UniqueIdentifier>{ae9b106b-24e9-4c74-b950-d1ef64d960ca}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ソース ファイル\Component\LoopMotionComponent">
       <UniqueIdentifier>{14ede3ea-c38e-48d0-b8a6-7dca3addddab}</UniqueIdentifier>
     </Filter>
     <Filter Include="ソース ファイル\Actor\BackGroundActor\MoveBGActor">
       <UniqueIdentifier>{3574e003-d7d1-4036-8a17-8a34248c7b78}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\UI">
+      <UniqueIdentifier>{c4eb85d6-3df8-481a-b6ff-0919daba51be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\UI\PlaySceneUI">
+      <UniqueIdentifier>{48e0553f-0a2a-4580-b808-bbd66206051b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\UI\TitleSceneUI">
+      <UniqueIdentifier>{a4490627-75ac-40f7-b9a9-78373a7cec28}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Actor\BackGroundActor\DoorActor">
+      <UniqueIdentifier>{a0a34560-33e3-4c48-b079-0c5765ce17ce}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -363,9 +372,6 @@
     <ClCompile Include="Receiver.cpp">
       <Filter>ソース ファイル\Actor\BackGroundActor\StaticBGActor</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerStateJump.cpp">
-      <Filter>ソース ファイル\Actor\Player\State</Filter>
-    </ClCompile>
     <ClCompile Include="EnemyManager.cpp">
       <Filter>ソース ファイル\Actor\Enemy</Filter>
     </ClCompile>
@@ -375,11 +381,26 @@
     <ClCompile Include="LoopMotionComponent.cpp">
       <Filter>ソース ファイル\Component\LoopMotionComponent</Filter>
     </ClCompile>
-    <ClCompile Include="UIManager.cpp">
+    <ClCompile Include="ButtonSprite.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="PlaySceneUI.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerStateJumpStart.cpp">
+      <Filter>ソース ファイル\Actor\Player\State</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerStateJumpLoop.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerStateJumpEnd.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="MoveBGActor.cpp">
       <Filter>ソース ファイル\Actor\BackGroundActor\MoveBGActor</Filter>
+    </ClCompile>
+    <ClCompile Include="DoorActor.cpp">
+      <Filter>ソース ファイル\Actor\BackGroundActor\DoorActor</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -578,12 +599,6 @@
     <ClInclude Include="Receiver.h">
       <Filter>ソース ファイル\Actor\BackGroundActor\StaticBGActor</Filter>
     </ClInclude>
-    <ClInclude Include="PlayerStateJump.h">
-      <Filter>ソース ファイル\Actor\Player\State</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerStateJumpLoop.h">
-      <Filter>ソース ファイル\Actor\Player\State</Filter>
-    </ClInclude>
     <ClInclude Include="EnemyManager.h">
       <Filter>ソース ファイル\Actor\Enemy</Filter>
     </ClInclude>
@@ -593,11 +608,26 @@
     <ClInclude Include="LoopMotionComponent.h">
       <Filter>ソース ファイル\Component\LoopMotionComponent</Filter>
     </ClInclude>
-    <ClInclude Include="UIManager.h">
-      <Filter>ソース ファイル</Filter>
+    <ClInclude Include="PlaySceneUI.h">
+      <Filter>ソース ファイル\UI\PlaySceneUI</Filter>
+    </ClInclude>
+    <ClInclude Include="ButtonSprite.h">
+      <Filter>ソース ファイル\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerStateJumpStart.h">
+      <Filter>ソース ファイル\Actor\Player\State</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerStateJumpLoop.h">
+      <Filter>ソース ファイル\Actor\Player\State</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerStateJumpEnd.h">
+      <Filter>ソース ファイル\Actor\Player\State</Filter>
     </ClInclude>
     <ClInclude Include="MoveBGActor.h">
       <Filter>ソース ファイル\Actor\BackGroundActor\MoveBGActor</Filter>
+    </ClInclude>
+    <ClInclude Include="DoorActor.h">
+      <Filter>ソース ファイル\Actor\BackGroundActor\DoorActor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -16,14 +16,14 @@
 #include "ThirdPersonCameraActor.h";
 #include "SphereObj.h"
 #include "SwitchActor.h"
-#include "ChangeBGActor.h"
+#include "MoveBGActor.h"
 
 GameScene::GameScene()
 	:mFont(nullptr)
 	,mTex (nullptr)
 	,mGrid(nullptr)
 	,mHealthScaleX(0.3f)
-	,mLightDistance(4000.0f)
+	,mLightDistance(6000.0f)
 {
 	printf("-----------------GameScene-----------------\n");
 	// フォント初期化
@@ -47,10 +47,10 @@ GameScene::GameScene()
 	dir.mDiffuseColor = Vector3(0.78f, 0.88f, 1.0f);
 	dir.mSpecColor = Vector3(0.8f, 0.8f, 0.8f);
 	Vector3 lightDir = dir.mDirection;
-	RENDERER->SetDepthSetting(Vector3(0, 0, 0), lightDir, Vector3::UnitZ, mLightDistance);
+	RENDERER->SetDepthSetting(Vector3(-1272, -100, 490), lightDir, Vector3::UnitZ, mLightDistance);
 
 	// プレイヤーの生成
-	player = new PlayerActor(Vector3(0.0, 0.0, -17.0),                 // 座標
+	player = new PlayerActor(Vector3(-4000.0, 34.0, 470.0),            // 座標
 	                       	 1.0,                                      // スケール
 	                         "Assets/Player/Sword_And_Shield.gpmesh",  // gpMeshのファイルパス
 	                         "Assets/Player/Sword_And_Shield.gpskel"); // gpSkelのファイルパス
@@ -62,19 +62,17 @@ GameScene::GameScene()
 	// バックグラウンドの生成
 	new StaticBGActor(Vector3(0.0, 0.0, 0.0), "Assets/BackGround/BackGround.gpmesh");
 	
-	new SphereObj(Vector3(10.0, 0.0, 0.0));
+	//new SphereObj(Vector3(10.0, 0.0, 0.0));
 
 	// スイッチの生成
-	SwitchActor* sw = new SwitchActor(Vector3(0, 0, 0), "Assets/Sphere/Sphere.gpmesh", false);
-
-	ChangeBGActor* changeBG = new ChangeBGActor(Vector3(0, 0, 0), "Assets/BackGround/Mesh_Dungeons_Floor.gpmesh");
-
-	sw->AddReceiver(changeBG);
+	SwitchActor* sw = new SwitchActor(Vector3(-3623.0, -382.0, 520.0), "Assets/Sphere/Sphere.gpmesh", false);
+	MoveBGActor* moveBG = new MoveBGActor(Vector3(-3215.0, -125.0, 470.0), Vector3(-4000.0, 34.0, 470.0), 10, "Assets/BackGround/MoveBlock.gpmesh");
+	moveBG->SetScale(4.0f);
+	sw->AddReceiver(moveBG);
 
 	// バックグラウンドの当たり判定の生成
-	new BGCollisionSetter("Assets/BackGround/BackGroundCollisionBox.json");
+	new BGCollisionSetter("Assets/BackGround/BackGroundCollision.json");
 
-	
 	// ゲームシステムに当たり判定リストを登録する
 	GAMEINSTANCE.GetPhysics()->SetOneSideReactionCollisionPair(Tag::Enemy, Tag::Player);
 	GAMEINSTANCE.GetPhysics()->SetOneSideReactionCollisionPair(Tag::BackGround, Tag::Player);

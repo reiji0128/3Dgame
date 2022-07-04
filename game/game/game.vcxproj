@@ -162,6 +162,7 @@
     <ClCompile Include="BitmapText.cpp" />
     <ClCompile Include="BoneTransform.cpp" />
     <ClCompile Include="BoxCollider.cpp" />
+    <ClCompile Include="ButtonSprite.cpp" />
     <ClCompile Include="CameraActor.cpp" />
     <ClCompile Include="ChangeBGActor.cpp" />
     <ClCompile Include="ChangeMeshComponent.cpp" />
@@ -170,6 +171,7 @@
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="DebugGrid.cpp" />
     <ClCompile Include="DepthMap.cpp" />
+    <ClCompile Include="DoorActor.cpp" />
     <ClCompile Include="EffectComponent.cpp" />
     <ClCompile Include="EffekseerEffect.cpp" />
     <ClCompile Include="EnemyActor.cpp" />
@@ -199,18 +201,16 @@
     <ClCompile Include="Math.cpp" />
     <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="MeshComponent.cpp" />
-    <ClCompile Include="MoveBGActor.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
+    <ClCompile Include="MoveBGActor.cpp" />
     <ClCompile Include="Music.cpp" />
     <ClCompile Include="PhysicsWorld.cpp" />
     <ClCompile Include="PlayerActor.cpp" />
     <ClCompile Include="PlayerStateIdle.cpp" />
-    <ClCompile Include="PlayerStateJump.cpp" />
+    <ClCompile Include="PlayerStateJumpEnd.cpp" />
+    <ClCompile Include="PlayerStateJumpLoop.cpp" />
+    <ClCompile Include="PlayerStateJumpStart.cpp" />
     <ClCompile Include="PlayerStateRun.cpp" />
+    <ClCompile Include="PlaySceneUI.cpp" />
     <ClCompile Include="RapidJsonHelper.cpp" />
     <ClCompile Include="Receiver.cpp" />
     <ClCompile Include="Renderer.cpp" />
@@ -228,12 +228,6 @@
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="ThirdPersonCameraActor.cpp" />
     <ClCompile Include="TitleScene.cpp" />
-    <ClCompile Include="UIManager.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
     <ClCompile Include="VertexArray.cpp" />
     <ClCompile Include="WallCollider.cpp" />
   </ItemGroup>
@@ -247,6 +241,7 @@
     <ClInclude Include="BitmapText.h" />
     <ClInclude Include="BoneTransform.h" />
     <ClInclude Include="BoxCollider.h" />
+    <ClInclude Include="ButtonSprite.h" />
     <ClInclude Include="CameraActor.h" />
     <ClInclude Include="ChangeBGActor.h" />
     <ClInclude Include="ChangeMeshComponent.h" />
@@ -255,6 +250,7 @@
     <ClInclude Include="Component.h" />
     <ClInclude Include="DebugGrid.h" />
     <ClInclude Include="DepthMap.h" />
+    <ClInclude Include="DoorActor.h" />
     <ClInclude Include="EffectComponent.h" />
     <ClInclude Include="EffekseerEffect.h" />
     <ClInclude Include="EnemyActor.h" />
@@ -285,20 +281,17 @@
     <ClInclude Include="MatrixPalette.h" />
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="MeshComponent.h" />
-    <ClInclude Include="MoveBGActor.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClInclude>
+    <ClInclude Include="MoveBGActor.h" />
     <ClInclude Include="Music.h" />
     <ClInclude Include="PhysicsWorld.h" />
     <ClInclude Include="PlayerActor.h" />
     <ClInclude Include="PlayerStateBase.h" />
     <ClInclude Include="PlayerStateIdle.h" />
-    <ClInclude Include="PlayerStateJump.h" />
+    <ClInclude Include="PlayerStateJumpEnd.h" />
     <ClInclude Include="PlayerStateJumpLoop.h" />
+    <ClInclude Include="PlayerStateJumpStart.h" />
     <ClInclude Include="PlayerStateRun.h" />
+    <ClInclude Include="PlaySceneUI.h" />
     <ClInclude Include="RapidJsonHelper.h" />
     <ClInclude Include="Receiver.h" />
     <ClInclude Include="Renderer.h" />
@@ -317,12 +310,6 @@
     <ClInclude Include="Texture.h" />
     <ClInclude Include="ThirdPersonCameraActor.h" />
     <ClInclude Include="TitleScene.h" />
-    <ClInclude Include="UIManager.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClInclude>
     <ClInclude Include="VertexArray.h" />
     <ClInclude Include="WallCollider.h" />
   </ItemGroup>
